@@ -1,0 +1,26 @@
+#search-bar{
+  float:left;
+}
+
+#style{
+  float:right;
+  font-size:30px;
+}
+
+#movieOption{
+  float:right;
+}
+
+.bar-title{
+  float:left;
+}
+
+/*清除浮動效果，讓高度出現，方法II*/
+.clearfix:after{
+  visibility: hidden;
+  display: table;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}

@@ -1,0 +1,246 @@
+/* ========== CSS 全區設定 ========== */
+/*公版內容開始，排版用class，標註特定位置用id*/
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  font-family: Muli,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+}
+
+* {
+  /*border-box：實際寬高＝所設定的數值(已包含border和padding)*/
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom:10px;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+a, a:hover, a:focus {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/*Section 共用設定*/
+section {
+  display:table;
+  padding-left:350px;
+  width:90%;
+  height:100%; /*別忘記設定高度，否則無法垂直置中*/
+}
+
+/*容器 Container 設定*/
+.container {
+  display:table-cell;
+  width: 85%;
+  max-width: 1170px;
+  margin: 0 auto;
+  vertical-align:middle;
+  text-align:justify;
+}
+
+/*各段字型專案調整*/
+h1{
+  font-size:50px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 24px;
+  line-height: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+h3, h4{
+  text-transform: uppercase;
+}
+
+h4{
+  color:#0A50EB;
+}
+p{
+  font-size:16px;
+  margin:25px auto;
+}
+
+
+/*清除浮動效果，讓高度出現，方法I*/
+.clearfix {
+  clear:both;
+}
+
+/*公版內容結束*/
+
+/* ========== HEADER設定 ========== */
+header{
+  position:fixed;
+  width:250px;
+  height:100%;
+  background-color: #0A50EB;
+}
+
+.container-table{
+  display:table;
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+.container-table-cell{
+  display:table-cell;
+  text-align:center;
+  vertical-align: middle;
+}
+
+.container-table-cell img{
+  max-width: 150px;
+  margin: 0 auto;
+  border: 5px solid #0084FF;
+  border-radius: 50%;
+}
+
+.container-table-cell ul li p{
+  display:block;
+  font-size: 16px;
+  line-height:24px;
+  padding:5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.container-table-cell ul li a{
+  display:block;
+  color:rgba(255,255,255,0.5);
+  text-decoration:none;
+  font-weight:bold;
+  -webkit-transition: linear 2ms;
+  -moz-transition: linear 2ms;
+  -ms-transition: linear 2ms;
+  -o-transition: linear 2ms;
+  transition: linear 2ms;
+}
+
+header nav a:hover{
+  color:#fff;
+}
+
+/* ========== Home設定 ========== */
+.home span{
+  color:#0A50EB;
+}
+
+.home a.mail{
+  display:inline-block;
+  margin-bottom: 40px;
+  font-size:14px;
+}
+
+.home p{
+  line-height: 20px;
+  color:#8e8e8e;
+}
+
+.social-icon a{
+  margin-top:30px;
+  margin-right:20px;
+  display:inline-block;
+  width:40px;
+  height:40px;
+  text-align: center;
+  color:#ffffff;
+  background-color: #333;
+  border-radius:50%;
+  font-size:25px;
+  line-height:40px;
+}
+
+/* ========== Experience設定 ========== */
+.container#exp{
+  vertical-align: top;
+}
+
+.resume{
+  display:inline-block;
+}
+
+.job-left{
+  float:left;
+  width:75%;
+}
+
+.job-left p{
+  color:#8e8e8e;
+}
+
+p.time{
+  float:right;
+  width:20%;
+  text-transform: capitalize;
+  font-size:12px;
+  color: #0A50EB;
+  text-align: right;
+  margin:10px;
+}
+
+/* ========== Skills 設定 ========== */
+.container#skills{
+  vertical-align: top;
+}
+
+.skills .container h2{
+  margin-top:180px;
+  font-size:26pt;
+  margin-bottom:80px;
+}
+
+.skills .container h3{
+  font-size:14pt;
+  margin-bottom:30px;
+  color:#0A50EB;
+}
+
+.skills-icon a{
+  display:inline-block;
+  margin-bottom:20px;
+  font-size:40px;
+  margin-right: 15px;
+  color:#9d9d9d;
+}
+
+.skills ul li{
+  color:#9d9d9d;
+  font-size:18px;
+}
+
+.skills ul li span{
+  margin-left:10px;
+}
+
+.workflow ul i{
+  margin: 0 5px;
+}
