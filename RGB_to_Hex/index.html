@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RGB to Hex Gadget</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="rgb">
+      <h3>RGB</h3>
+      <div class="redInput">
+        <h4>R:<input type="text" id="red"></h4>
+        <div class='redsq'></div>
+      </div>
+      <div class="clearfix"></div>
+
+      <div class="greenInput">
+        <h4>G:<input type="text" id="green"></h4>
+        <div class='greensq'></div>
+      </div>
+      <div class="clearfix"></div>
+
+      <div class="blueInput">
+        <h4>B:<input type="text" id="blue"></h4>
+        <div class='bluesq'></div>
+      </div>
+      <div class="clearfix"></div>
+
+      <button type="submit" class="btn btn-primary" id="convert">Convert</button>
+    </div>
+
+    <div class="hex">
+      <h3>HEX</h3>
+      <div id='dataPanel'>
+        <div class="col-sm-12">
+          <input type="text" readonly class="form-control-plaintext" id="Result" value="">
+        </div>
+      </div>
+      <div class='resultSquare'>
+        <!--轉換數值所呈現的正方形顏色-->
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <script src="index.js"></script>
+</body>
+
+</html>
