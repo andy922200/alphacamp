@@ -60,7 +60,7 @@ function displayCards(data, genresList, userChoice) {
       `
       for (let j = 0; j < data[i].genres.length; j++) {
         htmlContent += `
-          <h6><span class="badge badge-secondary">${genresList[j + 1]}</span></h6>
+          <h6><span class="badge badge-secondary">${genresList[data[i].genres[j]]}</span></h6>
       `
       }
 
