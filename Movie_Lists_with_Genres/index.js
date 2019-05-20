@@ -44,16 +44,22 @@ function display(data, genresList) {
 //顯示右邊的卡片清單
 function displayCards(data, genresList, userChoice) {
   const genresName = Object.values(genresList)
+  let count = 0
   //console.log(genresList)
   let code = genresName.indexOf(userChoice) + 1
   //console.log(code)
   for (let i = 0; i < data.length; i++) {
     let htmlContent = ''
+    if (data[i].genres.indexOf(code) < 0) {
+      count += 1
+      //console.log(count)
+      displayNoContent(count, data)
+    }
     if (data[i].genres.indexOf(code) >= 0) {
       //console.log(data[i].genres)
       htmlContent += `
-      <div class="col-sm-3">
-        <div class="card mb-2">
+      <div class="col-sm-4">
+        <div class="card mb-1">
           <img class="card-img-top " src="${posterBASE_URL}${data[i].image}" alt="Card image cap">
           <div class="card-body movie-item-body">
             <h5 class="card-title">${data[i].title}</h5>
@@ -75,6 +81,13 @@ function displayCards(data, genresList, userChoice) {
   }
 }
 
-
-
-
+//運用 async/await 來等候資料生成
+async function displayNoContent(count, data) {
+  if (count === data.length) {
+    let htmlContent = ''
+    htmlContent = `
+        <h3>此類別無資料，請點選其他選項。</h3>
+      `
+    dataPanel.innerHTML += htmlContent
+  }
+}

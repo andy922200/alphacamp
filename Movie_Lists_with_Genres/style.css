@@ -65,7 +65,7 @@ img {
 /*----------LIST----------*/
 .list{
   float:left;
-  width:200px;
+  max-width:130px;
 }
 
 #genres a{
@@ -79,11 +79,18 @@ img {
 
 /*----------Display----------*/
 .display{
-  margin-left:200px;
-  width:970px;
+  margin-left:130px;
+  max-width:970px;
 }
 
 #dataPanel{
   display:flex;
   flex-wrap:wrap;
+}
+
+/*RWD*/
+@media screen and (min-width:576px){
+  .display h6{
+    font-size:10px;
+  }
 }
