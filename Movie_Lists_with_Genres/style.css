@@ -87,10 +87,3 @@ img {
   display:flex;
   flex-wrap:wrap;
 }
-
-/*RWD*/
-@media screen and (min-width:576px){
-  .display h6{
-    font-size:10px;
-  }
-}
