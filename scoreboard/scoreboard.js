@@ -6,8 +6,6 @@ let players = [
   { name: '三井壽', pts: 21, reb: 4, ast: 3, stl: 0, blk: 0 }
 ]
 
-const dataPanel = document.querySelector('#data-panel')
-
 // write your code here
 // 顯示表格，裡頭要有一個新增球員資料的功能
 function displayPlayerList(data) {
@@ -29,15 +27,13 @@ function addNewRow(player) {
 
   for (let i = 0; i < value.length; i++) {
     // value[i] 取得 key 的名稱, 再用${}取裡頭的value
-    rowContent += `
-      <td>
-      ${player[value[i]]} 
+    rowContent += `<td>
+    <span>${player[value[i]]}</span>
     `
     if (value[i] !== 'name') {
       rowContent += `
       <span class="fa fa-minus-circle"></span>
-      <span class="fa fa-plus-circle"></span>
-      `
+      <span class="fa fa-plus-circle"></span>`
     }
     rowContent += `
       </td>
@@ -46,4 +42,16 @@ function addNewRow(player) {
   return rowContent
 }
 
+const dataPanel = document.querySelector('#data-panel')
 displayPlayerList(players)
+
+// 設置監聽+-事件
+const table = document.querySelector('table')
+table.addEventListener('click', function (event) {
+  let figure = event.target.parentElement.children[0]
+  if (event.target.classList.contains('fa-minus-circle')) {
+    figure.innerHTML = Number(figure.textContent) - 1
+  } else if (event.target.classList.contains('fa-plus-circle')) {
+    figure.innerHTML = Number(figure.textContent) + 1
+  }
+})
