@@ -30,3 +30,7 @@ a movie list with simple list group from Bootstrap.
 ## [Scoreboard](https://andy922200.github.io/alphacamp/scoreboard/scoreboard.html)
 A simple scoreboard (by JavaScript)  
 運用 JavaScript 打造的互動計分版
+
+## [Alpha POS](https://andy922200.github.io/alphacamp/AlphaPOS/index.html)
+a simple layout on POS machine  
+簡單的 POS 機器互動介面
