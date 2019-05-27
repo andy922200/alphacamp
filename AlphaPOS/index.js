@@ -29,16 +29,16 @@ let allDrinksOptions = document.querySelectorAll('input[name="drink"]')
 
 //解決按鈕失靈
 $(document).ready(function () {
-$('.btn-outline-primary').click(function () {
-$('.btn-outline-primary').removeClass('active');
-$(this).addClass('active');
-});
+  $('.btn-outline-primary').click(function () {
+    $('.btn-outline-primary').removeClass('active');
+    $(this).addClass('active');
+  });
 
-$('.btn-outline-info').click(function () {
-$('.btn-outline-info').removeClass('active');
-$(this).addClass('active');
-});
- 
+  $('.btn-outline-info').click(function () {
+    $('.btn-outline-info').removeClass('active');
+    $(this).addClass('active');
+  });
+
 });
 
 // add Button Listener
