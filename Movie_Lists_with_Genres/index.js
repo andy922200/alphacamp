@@ -4,6 +4,8 @@ const Movies_URL = 'movies'
 const genres = document.getElementById('genres')
 const dataPanel = document.getElementById('dataPanel')
 const pagination = document.getElementById('pagination')
+const search = document.getElementById('search')
+const searchInput = document.getElementById('searchInput')
 const ITEM_PER_PAGE = 6
 const genresList = { "1": "Action", "2": "Adventure", "3": "Animation", "4": "Comedy", "5": "Crime", "6": "Documentary", "7": "Drama", "8": "Family", "9": "Fantasy", "10": "History", "11": "Horror", "12": "Music", "13": "Mystery", "14": "Romance", "15": "Science Fiction", "16": "TV Movie", "17": "Thriller", "18": "War", "19": "Western" }
 let paginationData = []
@@ -121,4 +123,18 @@ pagination.addEventListener('click', event => {
   if (event.target.tagName === 'A') {
     getPageData(event.target.dataset.page)
   }
+})
+
+//search 監聽器
+search.addEventListener('click', event => {
+  let input = searchInput.value
+  let choiceMovies = []
+  const regex = new RegExp(input, 'i')
+  event.preventDefault()
+
+  choiceMovies = data.filter(movie => movie.title.match(regex))
+  //console.log(choiceMovies)
+  getTotalPages(choiceMovies)
+  getPageData(1, choiceMovies)
+  searchInput.value = ''
 })

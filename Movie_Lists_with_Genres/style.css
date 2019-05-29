@@ -62,6 +62,19 @@ img {
   height: 0;
 }
 
+/*----------SEARCH----------*/
+@media (max-width:576px){
+  .search{
+  background-color: #d6caca;
+  }
+  .form-inline .btn{
+    margin-left:5px;
+  }
+  .form-inline{
+    flex-wrap: nowrap;
+  }
+}
+
 /*----------LIST----------*/
 .list{
   float:left;
