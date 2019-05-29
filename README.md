@@ -1,6 +1,6 @@
-# AC_Semester_2
+# AC_Semester_2 to 4
 This is the record from the 'AlphaCamp Courses'.  
-這是有關於 AlphaCamp 第二學期課程的學習記錄。
+這是有關於 AlphaCamp 第二學期到第四學期的學習記錄。
 
 ## [AC_Genie_Layout](https://andy922200.github.io/alphacamp/AC_Genie_layout/index.html) 
 A simple practice of the two-column layout  
@@ -23,7 +23,7 @@ A demo page for self-introduction.
 實作一個自我介紹頁面。
 #### [More Reading 個人完整版簡介](https://andy922200.github.io/CV-Resume/)
 
-## [Movie_List](https://andy922200.github.io/alphacamp/Movie_Lists_with_Genres/)
+## [Movie_Lists_with_Genres](https://andy922200.github.io/alphacamp/Movie_Lists_with_Genres/)
 a movie list with simple list group from Bootstrap.  
 運用 Bootstrap 的列表群組套件完成的小型電影清單
 
