@@ -16,7 +16,7 @@ axios //相關的啟用 function 要放在 axios 裡，以免async特性導致�
     //console.log(response.data.results)
     data = response.data.results
     display(data, genresList)
-    filterMovie(data, genresList, 'Action') //載入時預設顯示
+    filterMovie(data, genresList, '') //載入時預設顯示
   })
   .catch((error) => console.log(error))
 
@@ -48,9 +48,14 @@ function display(data, genresList) {
 
 //過濾所選資料
 function filterMovie(data, genresList, userChoice) {
+  let choiceMovies = []
+  if (userChoice === '') {
+    choiceMovies = data
+    getTotalPages(choiceMovies)
+    getPageData(1, choiceMovies)
+  }
   const genresName = Object.values(genresList)
   let count = 0
-  let choiceMovies = []
   //console.log(genresList)
   let code = genresName.indexOf(userChoice) + 1
   //console.log(code)
