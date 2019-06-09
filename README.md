@@ -34,3 +34,6 @@ A simple scoreboard (by JavaScript)
 ## [Alpha POS](https://andy922200.github.io/alphacamp/AlphaPOS/index.html)
 a simple layout on POS machine  
 簡單的 POS 機器互動介面
+
+## Restaurant List by Node.js
+運用 Node.js 製作的小工具，使用者可以查看餐廳資訊(富有搜尋功能)
