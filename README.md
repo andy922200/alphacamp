@@ -23,6 +23,10 @@ A demo page for self-introduction.
 實作一個自我介紹頁面。
 #### [More Reading 個人完整版簡介](https://andy922200.github.io/CV-Resume/)
 
+## [Movie_Lists](https://andy922200.github.io/alphacamp/Movie_List/index.html)
+(Bootstrap) a movie list with add/favorite/delete functions.  
+(Bootstrap) 小型電影清單，附有新增/我的最愛/刪除 功能
+
 ## [Movie_Lists_with_Genres](https://andy922200.github.io/alphacamp/Movie_Lists_with_Genres/)
 a movie list with simple list group from Bootstrap.  
 運用 Bootstrap 的列表群組套件完成的小型電影清單
