@@ -24,13 +24,15 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
+  let noResult = true
   const restaurants = restaurantList.results.filter(item => {
     return item.name.toLowerCase().includes(req.query.keyword.toLowerCase())
   })
   if (restaurants.length > 0) {
-    res.render('index', { css: ['index.css'], restaurants: restaurants, keyword: req.query.keyword })
+    noResult = false
+    res.render('index', { css: ['index.css'], restaurants: restaurants, keyword: req.query.keyword, noResult: noResult })
   } else {
-    res.render('noResult', { css: ['index.css'] })
+    res.render('index', { css: ['index.css'], noResult: noResult })
   }
 })
 

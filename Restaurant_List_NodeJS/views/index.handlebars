@@ -17,10 +17,15 @@
 </div>
 
 <!-- restaurant list -->
+{{#if noResult}}
+<h3>沒有找到符合的選項</h3>
+
+{{else}}
 <div class="container mt-5">
   <div class="row" id='error'>
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
+
         {{#each restaurants}}
         <a href="/restaurants/{{this.id}}" class="text-secondary">
           <div class="card mb-3">
@@ -45,3 +50,5 @@
     </div>
   </div>
 </div>
+
+{{/if}}
