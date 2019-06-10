@@ -10,14 +10,6 @@ A simple practice of the two-column layout
 A sample of layout design  
 簡單實作按鈕與介面排版
 
-## FizzBuzzTest
-A simple program for testing FizzBuzz by Mocha and Chai test.
-### Features
-* 被3整除得到 Fizz
-* 被5整除得到 Buzz
-* 被3和5整除得到 FizzBuzz
-* 若非以上狀況，則傳回輸入的數字
-
 ## [Introself_website](https://andy922200.github.io/alphacamp/Introself_website/index.html)
 A demo page for self-introduction.  
 實作一個自我介紹頁面。
@@ -41,3 +33,14 @@ a simple layout on POS machine
 
 ## Restaurant List by Node.js
 運用 Node.js 製作的小工具，使用者可以查看餐廳資訊(富有搜尋功能)
+
+## Password Generator 密碼產生器
+運用 Node.js 製作的小工具，使用者可以隨機產生一組密碼
+
+## FizzBuzzTest
+A simple program for testing FizzBuzz by Mocha and Chai test.
+### Features
+* 被3整除得到 Fizz
+* 被5整除得到 Buzz
+* 被3和5整除得到 FizzBuzz
+* 若非以上狀況，則傳回輸入的數字
