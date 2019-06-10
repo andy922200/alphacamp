@@ -1,0 +1,51 @@
+<!-- ./view/index.handlebars -->
+<h2>你想對誰說幹話？</h2>
+<section>
+  <form method="POST" action="/">
+    <div>
+      <div class="form-group form-row mb-2 justify-content-center" id="choices">
+        <div class="col-md-4">
+          <img src="../img/developer.jpg" alt="developer">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="developer" name="developer" {{#if check1}} checked
+              {{/if}}>
+            <label class="custom-control-label" for="developer">
+              <h5>工程師</h5>
+            </label>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <img src="../img/designer.jpg" alt="designer">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="designer" name="designer" {{#if check2}} checked
+              {{/if}}>
+            <label class="custom-control-label" for="designer">
+              <h5>設計師</h5>
+            </label>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <img src="../img/entrepreneur.jpg" alt="entrepreneur">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="entrepreneur" name="entrepreneur" {{#if check3}}
+              checked {{/if}}>
+            <label class="custom-control-label" for="entrepreneur">
+              <h5>企業家</h5>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="generator">
+      <div>
+        <button type="summit" class="btn btn-primary justify-content-center">產生幹話</button>
+      </div>
+      <div class='results'>
+        {{trashTalk}}
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </form>
+</section>
