@@ -37,6 +37,9 @@ a simple layout on POS machine
 ## Password Generator 密碼產生器
 運用 Node.js 製作的小工具，使用者可以隨機產生一組密碼
 
+## Trash Talk Generator 幹話產生器
+運用 Node.js 製作的小工具，使用者可以隨機選擇職業產生幹話。
+
 ## FizzBuzzTest
 A simple program for testing FizzBuzz by Mocha and Chai test.
 ### Features
