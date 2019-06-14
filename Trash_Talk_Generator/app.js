@@ -31,6 +31,11 @@ app.post('/', (req, res) => {
   let check1 = false
   let check2 = false
   let check3 = false
+
+  if (option.length >= 2) {
+    return res.render('index', { css: ['index.css'], trashTalk: trashTalk, check1: check1, check2: check2, check3: check3 })
+  }
+
   if ((status[0] === 'on') && (option[0] === 'developer')) {
     check1 = true
   } else if ((status[0] === 'on') && (option[0] === 'designer')) {
@@ -38,10 +43,6 @@ app.post('/', (req, res) => {
   } else if ((status[0] === 'on') && (option[0] === 'entrepreneur')) {
     check3 = true
   }
-  if (option.length >= 2) {
-    check1 = false
-    check2 = false
-    check3 = false
-  }
+
   res.render('index', { css: ['index.css'], trashTalk: trashTalk, check1: check1, check2: check2, check3: check3 })
 })
