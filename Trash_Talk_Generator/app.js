@@ -4,6 +4,7 @@ const app = express()
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const generateTrashTalk = require('./generate_trash_talk')
+const handlebarsHelper = require('./handlebarsHelper')
 const port = 3000
 
 // template engine setting
@@ -25,24 +26,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  const option = Object.keys(req.body)
-  const trashTalk = generateTrashTalk(option)
-  let status = Object.values(req.body)
-  let check1 = false
-  let check2 = false
-  let check3 = false
-
-  if (option.length >= 2) {
-    return res.render('index', { css: ['index.css'], trashTalk: trashTalk, check1: check1, check2: check2, check3: check3 })
-  }
-
-  if ((status[0] === 'on') && (option[0] === 'developer')) {
-    check1 = true
-  } else if ((status[0] === 'on') && (option[0] === 'designer')) {
-    check2 = true
-  } else if ((status[0] === 'on') && (option[0] === 'entrepreneur')) {
-    check3 = true
-  }
-
-  res.render('index', { css: ['index.css'], trashTalk: trashTalk, check1: check1, check2: check2, check3: check3 })
+  const job = Object.keys(req.body)
+  const trashTalk = generateTrashTalk(job)
+  res.render('index', { css: ['index.css'], trashTalk: trashTalk, job: job })
 })

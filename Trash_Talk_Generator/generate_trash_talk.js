@@ -1,4 +1,3 @@
-// database
 const target = ['工程師', '設計師', '創業家']
 const task = {
   developer: ['加個按鈕', '加新功能', '切個版', '改一點 Code', '週末加班', '抓個 bug', '加幾行 Code', '跑個數據', '寫個程式', '寫個範本'],
