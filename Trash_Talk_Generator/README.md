@@ -1,7 +1,7 @@
 # Trash Talk Generator 幹話產生器
 運用 Node.js 製作的小工具，使用者可以隨機選擇職業產生幹話。
 
-## 環境建置與需求
+## The Requirements 環境建置與需求
 * [Node.js version 10.16.0 (LTS)](https://nodejs.org/en/)
 * [Express 4.17.1](https://www.npmjs.com/package/express)
 * [Express-Handlebars 3.1.0](https://www.npmjs.com/package/handlebars)
@@ -28,3 +28,6 @@ npm run dev
 
 ## 螢幕截圖
 ![Index](./public/img/Screenshot_Index.gif "indexScreenshot")
+
+## Contributor 貢獻者
+* [Andy Lien](https://smlpoints.com)
