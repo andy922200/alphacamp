@@ -1,0 +1,42 @@
+<!-- ./layouts/main.handlebars -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Restaurant List Full Version</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <!--不同頁面使用不同CSS-->
+  {{#each css}}
+  <link rel="stylesheet" href="/stylesheets/{{this}}">
+  {{/each}}
+</head>
+
+<body>
+  <header>
+    <!-- navigation -->
+    <nav class="navbar navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+            width="30" height="30" class="d-inline-block align-top" alt="Restaurant List">
+          Restaurant List
+        </a>
+      </div>
+    </nav>
+    <div class="banner"></div>
+  </header>
+
+  <!-- partial templates will replace the part of "body" here -->
+  {{{ body }}}
+
+  <!--JavaScript Files-->
+  <script src="/javascripts/jquery-3.4.1.min.js"></script>
+  <script src="/javascripts/popper.min.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
+</body>
+
+</html>
