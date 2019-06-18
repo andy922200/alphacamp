@@ -16,7 +16,7 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 // load restaurant model
-const Todo = require('./models/restaurant')
+const Restaurant = require('./models/restaurant')
 
 // express Listener
 app.listen(port, () => {
@@ -34,4 +34,4 @@ app.use(methodOverride('_method'))
 
 // load router settings
 app.use('/', require('./routes/home'))
-//app.use('/todos', require('./routes/todo'))
+app.use('/restaurants', require('./routes/restaurant'))
