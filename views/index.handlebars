@@ -42,10 +42,21 @@
                 {{this.rating}}
                 <i class="fas fa-star fa-xs"></i>
               </span>
-
+            </div>
+            <div class="card-footer">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" href="#" class="btn btn btn-primary">Edit</button>
+                <button type="button" href="#" class="btn btn btn-info">Detail</button>
+                <form action="#" method="POST">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+              <div class="clearfix"></div>
             </div>
           </div>
         </a>
+
+
         {{/each}}
       </div>
     </div>

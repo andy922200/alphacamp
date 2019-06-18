@@ -83,24 +83,62 @@ h3{
   text-align:center;
 }
 
-@media screen and (max-width: 992px) {
-  
+/*BUTTONS*/
+.card-columns .btn-group{
+  float:right;
+}
+
+.card-columns .btn-group button{
+  margin: 0px auto;
+  width:70px;
+  height:40px;
+  border-radius:0px;
+  font-size:14px;
+}
+
+/*清除浮動效果，讓高度出現，方法II*/
+.clearfix:after{
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+/*RWD*/
+@media screen and (min-width:576px) and (max-width: 991px) {
   .card img{
-    height: 115px;
+    height: 120px;
   }
-}
-
-@media screen and (max-width: 768px) {
-  
+  .card-columns .btn-group{
+    float:right;
+  }
+  .card-columns .btn-group button{
+    margin: 5px auto;
+    max-width:45px;
+    height:50px;
+    padding: 0px 1px;
+    border-radius:0rem;
+    font-size:14px;
+  }
+  .card-columns .btn-group form button{
+    font-size:13px;
+  }
   .restaurant-show-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
 
-@media screen and (max-width: 575px) {
-  
+@media screen and (max-width:575px){
+  .card-columns .btn-group button{
+    margin: 5px auto;
+    width:4.5rem;
+    height:40px;
+    border-radius:0rem;
+    font-size:0.9rem;
+  }
   .card img{
     height: auto;
   }
-  
 }
