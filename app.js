@@ -34,4 +34,4 @@ app.use(methodOverride('_method'))
 
 // load router settings
 app.use('/', require('./routes/home'))
-app.use('/restaurants', require('./routes/restaurant'))
+app.use('/restaurants', require('./routes/restaurant')) //前為網址，後為 Router
