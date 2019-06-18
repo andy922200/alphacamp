@@ -84,6 +84,19 @@ h3{
 }
 
 /*BUTTONS*/
+#create{
+  display:flex;
+  justify-content: space-between;
+}
+#create div{
+  width:1100px;
+}
+#create button{
+  margin:0px 0px 3px 0px;
+  min-width:120px;
+  height:40px;
+}
+
 .card-columns .btn-group{
   float:right;
 }
@@ -113,6 +126,18 @@ h3{
 
 /*RWD*/
 @media screen and (min-width:576px) and (max-width: 991px) {
+  #create{
+    display:flex;
+    justify-content: space-between;
+  }
+  #create div{
+    width:900px;
+  }
+  #create button{
+    margin:0px 0px 3px 0px;
+    min-width:120px;
+    height:40px;
+  }
   #choices{
   display:flex;
   justify-content: center;
@@ -136,7 +161,35 @@ h3{
   }
 }
 
-@media screen and (max-width:575px){
+@media screen and (min-width:340px) and (max-width:575px){
+  #create{
+    display:flex;
+    justify-content: space-between;
+  }
+  #create div{
+    width:500px;
+  }
+  #create button{
+    margin:0px 0px 3px 0px;
+    min-width:120px;
+    height:40px;
+  }
+  .card img{
+    height: auto;
+  }
+}
+
+@media screen and (max-width:340px){
+  #create{
+    display:flex;
+    justify-content: center;
+  }
+  #create div{
+    width:300px;
+  }
+  #create button{
+    min-width:60px;
+  }
   .card img{
     height: auto;
   }
