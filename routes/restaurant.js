@@ -32,10 +32,20 @@ router.put('/:id', (req, res) => {
     restaurant.google_map = req.body.inputGoogleMapURL
     restaurant.rating = req.body.inputRating
     restaurant.description = req.body.inputDescription
-    console.log(req.body)
     restaurant.save(err => {
       if (err) return console.error(err)
       return res.redirect(`/restaurants/${req.params.id}`)
+    })
+  })
+})
+
+// delete a restaurant
+router.delete('/:id/delete', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    restaurant.remove(err => {
+      if (err) return console.error(err)
+      return res.redirect('/')
     })
   })
 })
