@@ -88,8 +88,13 @@ h3{
   float:right;
 }
 
+#choices{
+  display:flex;
+  justify-content: center;
+}
+
 .card-columns .btn-group button{
-  margin: 0px auto;
+  margin: 5px auto;
   width:70px;
   height:40px;
   border-radius:0px;
@@ -108,11 +113,12 @@ h3{
 
 /*RWD*/
 @media screen and (min-width:576px) and (max-width: 991px) {
+  #choices{
+  display:flex;
+  justify-content: center;
+  }
   .card img{
     height: 120px;
-  }
-  .card-columns .btn-group{
-    float:right;
   }
   .card-columns .btn-group button{
     margin: 5px auto;
@@ -131,13 +137,6 @@ h3{
 }
 
 @media screen and (max-width:575px){
-  .card-columns .btn-group button{
-    margin: 5px auto;
-    width:4.5rem;
-    height:40px;
-    border-radius:0rem;
-    font-size:0.9rem;
-  }
   .card img{
     height: auto;
   }
