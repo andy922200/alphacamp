@@ -34,4 +34,4 @@ cd ~/mongodb/bin/
 6. 最後打開瀏覽器，輸入 localhost:3000 就可開始使用
 
 ## 螢幕截圖
-![Index](./public/img/ "indexScreenshot")
+![Index](./public/img/Demo_Version1.gif "indexScreenshot")
