@@ -40,6 +40,9 @@ a simple layout on POS machine
 ## Trash Talk Generator 幹話產生器
 運用 Node.js 製作的小工具，使用者可以隨機選擇職業產生幹話。
 
+## My Restaurant List with Database 我的餐廳清單資料庫
+運用 Node.js, mongoDB 製作的前後端應用程式，使用者可以隨機 建立、編輯、更新、刪除檔案
+
 ## FizzBuzzTest
 A simple program for testing FizzBuzz by Mocha and Chai test.
 ### Features
