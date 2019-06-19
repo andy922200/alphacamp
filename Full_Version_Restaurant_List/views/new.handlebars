@@ -1,0 +1,49 @@
+<div class="container">
+  <form action="/restaurants" method="POST">
+    <div class="form-row">
+      <div class="col-md-6 mb-3 form-group">
+        <label for="inputZhName">餐廳中文名稱</label>
+        <input type="text" class="form-control" name="inputZhName" placeholder="Restaurant Chinese Name">
+      </div>
+      <div class="col-md-6 mb-3 form-group">
+        <label for="inputEnName">餐廳英文名稱</label>
+        <input type="text" class="form-control" name="inputEnName" placeholder="Restaurant English Name">
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3 form-group">
+        <label for="inputCategory">種類</label>
+        <input type="text" class="form-control" name="inputCategory" placeholder="Category">
+      </div>
+      <div class="col-md-4 mb-3 form-group">
+        <label for="inputRating">星級評比</label>
+        <input type="text" class="form-control" name="inputRating" placeholder="Rating">
+      </div>
+      <div class="col-md-4 mb-3 form-group">
+        <label for="inputPhone">電話</label>
+        <input type="text" class="form-control" name="inputPhone" placeholder="Phone">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">地址</label>
+      <input type="text" class="form-control" name="inputAddress" placeholder="Address">
+    </div>
+    <div class="form-group">
+      <label for="inputImageURL">圖片網址</label>
+      <input type="text" class="form-control" name="inputImageURL" placeholder="ImageURL">
+    </div>
+    <div class="form-group">
+      <label for="inputGoogleMapURL">Google Map 網址</label>
+      <input type="text" class="form-control" name="inputGoogleMapURL" placeholder="GoogleMapURL">
+    </div>
+    <div class="form-group">
+      <label for="inputDescription">描述</label>
+      <textarea class="form-control" name="inputDescription" placeholder="Description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">儲存</button>
+    <a href="/" class="text-secondary">
+      <button type="button" class="btn btn-danger">放棄編輯</button>
+    </a>
+  </form>
+</div>
