@@ -70,8 +70,9 @@
                     <div class="modal-footer">
                       <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">回首頁</button>
-                        <form action="/restaurants/{{{this._id}}}/delete?_method=DELETE" method="POST">
+                        <form action="/restaurants/{{this.id}}/delete?_method=DELETE" method="POST">
                           <button type="submit" class="btn btn-danger">刪除</button>
+                        </form>
                       </div>
                     </div>
                   </div>

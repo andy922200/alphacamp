@@ -66,6 +66,7 @@ router.put('/:id', (req, res) => {
 
 // delete a restaurant
 router.delete('/:id/delete', (req, res) => {
+  //console.log(req.params.id)
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.remove(err => {
