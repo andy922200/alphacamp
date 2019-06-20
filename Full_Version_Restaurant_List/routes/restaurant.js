@@ -27,6 +27,19 @@ router.post('/', (req, res) => {
   })
 })
 
+// search restaurants
+router.get('/search', (req, res) => {
+  console.log(req.query.keyword)
+  let keyword = new RegExp(req.query.keyword, 'i')
+  let keywords = {
+    $or: [{ "name": keyword }, { "category": keyword }, { "description": keyword }]
+  }
+  Restaurant.find(keywords, (err, restaurants) => {
+    if (err) return console.error(err)
+    //console.log(restaurants)
+    return res.render('index', { css: ['index.css'], restaurant: restaurants })
+  })
+})
 
 // display a restaurant
 router.get('/:id', (req, res) => {
