@@ -83,6 +83,11 @@ h3{
   text-align:center;
 }
 
+/*title hover effect*/
+.card-body:hover{
+  background-color: yellow;
+}
+
 /*BUTTONS*/
 #create{
   display:flex;
