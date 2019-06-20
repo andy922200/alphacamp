@@ -87,12 +87,11 @@ h3{
 #create{
   display:flex;
   justify-content: space-between;
+  width:1200px
 }
-#create div{
-  width:1100px;
-}
+
 #create button{
-  margin:0px 0px 3px 0px;
+  margin:0px 0px 3px 10px;
   min-width:120px;
   height:40px;
 }
@@ -129,10 +128,9 @@ h3{
   #create{
     display:flex;
     justify-content: space-between;
-  }
-  #create div{
     width:900px;
   }
+
   #create button{
     margin:0px 0px 3px 0px;
     min-width:120px;
@@ -165,10 +163,9 @@ h3{
   #create{
     display:flex;
     justify-content: space-between;
-  }
-  #create div{
     width:500px;
   }
+
   #create button{
     margin:0px 0px 3px 0px;
     min-width:120px;
@@ -183,12 +180,14 @@ h3{
   #create{
     display:flex;
     justify-content: center;
-  }
-  #create div{
     width:300px;
+  }
+  #create a{
+    font-size:18px;
   }
   #create button{
     min-width:60px;
+    font-size:12px;
   }
   .card img{
     height: auto;

@@ -53,3 +53,64 @@ h3{
   display:flex;
   justify-content: center;
 }
+
+/*NAVBAR*/
+#create{
+  display:flex;
+  justify-content: space-between;
+  width:1200px
+}
+
+#create button{
+  margin:0px 0px 3px 10px;
+  min-width:120px;
+  height:40px;
+}
+
+/*RWD*/
+@media screen and (min-width:576px) and (max-width: 991px) {
+  #create{
+    display:flex;
+    justify-content: space-between;
+    width:900px;
+  }
+
+  #create button{
+    margin:0px 0px 3px 0px;
+    min-width:120px;
+    height:40px;
+  }
+  #choices{
+  display:flex;
+  justify-content: center;
+  }
+}
+
+@media screen and (min-width:340px) and (max-width:575px){
+  #create{
+    display:flex;
+    justify-content: space-between;
+    width:500px;
+  }
+
+  #create button{
+    margin:0px 0px 3px 0px;
+    min-width:120px;
+    height:40px;
+  }
+}
+
+@media screen and (max-width:340px){
+  #create{
+    display:flex;
+    justify-content: center;
+    width:300px;
+  }
+  #create a{
+    font-size:18px;
+  }
+  #create button{
+    min-width:60px;
+    font-size:12px;
+  }
+}
