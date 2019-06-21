@@ -2,6 +2,11 @@ header {
   overflow: hidden;
 }
 
+.row{
+  position:relative;
+  top:-40px;
+}
+
 .navbar .navbar-brand {
   color: #4592af;
 }
@@ -34,11 +39,6 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-h3{
-  margin-top:5px;
-  text-align:center;
-}
-
 /*清除浮動效果，讓高度出現，方法II*/
 .clearfix:after{
   visibility: hidden;
@@ -52,6 +52,7 @@ h3{
 #choices{
   display:flex;
   justify-content: center;
+  margin-bottom:20px;
 }
 
 /*NAVBAR*/
