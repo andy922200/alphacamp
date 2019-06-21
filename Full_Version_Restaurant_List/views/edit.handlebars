@@ -13,12 +13,12 @@
 
     </div>
     <div class="form-row">
-      <div class="col-md-4 mb-3 form-group">
-        <label for="inputCategory">種類</label>
-        <input type="text" class="form-control" name="inputCategory" placeholder="Category"
-          value="{{{restaurant.category}}}">
+      <div class="col-md-6 mb-3 form-group">
+        <label for="inputCategory">種類</label><span style="color:red">*</span>
+        <textarea class="form-control" name="inputCategory"
+          placeholder="「中東料理、日式料理、義式料理、美式料理、酒吧、咖啡、中式料理、韓式料理」擇一填入">{{restaurant.category}}</textarea>
       </div>
-      <div class="col-md-4 mb-3 form-group">
+      <div class="col-md-2 mb-3 form-group">
         <label for="inputRating">星級評比</label><span style="color:red">*</span>
         <input type="text" class="form-control" name="inputRating" placeholder="請輸入0~5之間的數字"
           value="{{{restaurant.rating}}}">
@@ -46,8 +46,7 @@
     </div>
     <div class="form-group">
       <label for="inputDescription">描述</label><span style="color:red">*</span>
-      <textarea class="form-control" name="inputDescription"
-        placeholder="Description">{{{restaurant.description}}}</textarea>
+      <textarea class="form-control" name="inputDescription" placeholder="餐廳描述">{{{restaurant.description}}}</textarea>
     </div>
     <button type="submit" class="btn btn-primary">儲存修改</button>
     <a href="/" class="text-secondary">

@@ -7,18 +7,18 @@ const { check, validationResult } = require('express-validator')
 
 // validator array
 const phonePattern = new RegExp("[0-9]{2}\-[0-9]{8}")
-const imageURLPattern = new RegExp("(https?:\/\/.*?\.(?:png|jpe?g|gif)(.*))(\w|$)", "g")
-const googleMapPattern = new RegExp("https://goo.gl/maps/[A-Za-z0-9]*", "g")
+const imageURLPattern = new RegExp("(https?:\/\/.*?\.(?:png|jpe?g|gif)(.*))(\w|$)", "i")
+const googleMapPattern = new RegExp("https://goo.gl/maps/[A-Za-z0-9]*", "i")
+const categories = ["中東料理", "日式料理", "義式料理", "美式料理", "酒吧", "咖啡", "中式料理", "韓式料理"]
 let conditions =
   [
     check('inputPhone')
       .exists()
       .isLength({ min: 10 })
-      .withMessage('輸入區碼後請加入一個半型 - ，欄位至少要有 10 位數')
       .custom((value) => {
         if (phonePattern.test(value)) {
           return true
-        } throw Error('Please check again!')
+        } throw new Error('輸入區碼後請加入一個半型 - ，欄位至少要有 10 位數')
       }),
     check('inputRating')
       .exists()
@@ -26,21 +26,30 @@ let conditions =
       .custom((value) => {
         if ((value >= 0) && (value <= 5)) {
           return true
-        } throw new Error('Please check again!')
+        } throw new Error('請檢查數字')
       }),
     check('inputImageURL')
       .exists()
       .custom((value) => {
         if (imageURLPattern.test(value)) {
           return true
-        } throw new Error('Please check again!')
+        } throw new Error('請檢查圖片網址')
       }),
     check('inputGoogleMapURL')
       .exists()
       .custom((value) => {
         if (googleMapPattern.test(value)) {
           return true
-        } throw Error('Please check again!')
+        } throw new Error('請檢查輸入的 Google Map 地址格式')
+      }),
+    check('inputCategory')
+      .exists()
+      .custom((value) => {
+        if (categories.indexOf(value) > 0) {
+          return true
+        } else {
+          throw new Error('請檢查輸入的類別是否正確')
+        }
       })
   ]
 
@@ -87,7 +96,7 @@ router.get('/search', (req, res) => {
 
 // filter
 router.get('/filter', (req, res) => {
-  console.log(req._parsedOriginalUrl.query)
+  //console.log(req._parsedOriginalUrl.query)
   switch (req._parsedOriginalUrl.query) {
     case 'atoz':
       Restaurant.find((err, restaurants) => {
@@ -150,7 +159,7 @@ router.put('/:id', conditions, (req, res) => {
     restaurant.description = req.body.inputDescription
 
     if (!errors.isEmpty()) {
-      console.log(errors)
+      //console.log(errors.array()[0]['msg'])
       res.render('edit', { css: ['edit.css'], restaurant: restaurant })
     } else {
       restaurant.save(err => {
