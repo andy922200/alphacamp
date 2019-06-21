@@ -169,6 +169,9 @@ h3{
   .restaurant-show-title {
     font-size: 1.8rem;
   }
+  .modal-footer .btn-group .btn-primary{
+    font-size:12px;
+  }
 }
 
 @media screen and (min-width:340px) and (max-width:575px){
