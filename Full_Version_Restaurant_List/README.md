@@ -1,15 +1,17 @@
-# My Restaurant List with Database 我的餐廳清單資料庫
+# My Restaurant List with Database 
+# 我的餐廳清單資料庫
 運用 Node.js, mongoDB 製作的前後端應用程式，使用者可以隨機 建立、編輯、更新、刪除檔案
 
- ## 環境建置與需求
+## 環境建置與需求
 * [Node.js version 10.16.0 (LTS)](https://nodejs.org/en/)
 * [Express 4.17.1](https://www.npmjs.com/package/express)
 * [Express-Handlebars 3.1.0](https://www.npmjs.com/package/handlebars)
 * [body-parser 1.19.0](https://www.npmjs.com/package/body-parser)
 * [method-override 3.0.0](https://www.npmjs.com/package/method-override)
 * [mongoose 5.6.0](https://www.npmjs.com/package/mongoose)
+* [express-validator 6.0.0](https://www.npmjs.com/package/express-validator)
 
- ## How to use? 如何使用？
+## How to use? 如何使用？
 1. 利用 git 或是 cmd 在目標資料夾下輸入以下指令
 ```
 git clone https://github.com/andy922200/alphacamp.git
@@ -33,5 +35,16 @@ cd ~/mongodb/bin/
 ```
 6. 最後打開瀏覽器，輸入 localhost:3000 就可開始使用
 
- ## 螢幕截圖
-![Index](./public/img/Demo_Version1.gif "indexScreenshot")
+## 螢幕截圖
+### 初始版 具備基本 CRUD 和 RWD 
+![Index](./public/img/Demo_Version1.gif "index")
+### 第二版 介面與功能優化
+#### 首頁 
+##### 篩選器、介面調整、搜尋功能、滑鼠 :hover 顏色變化
+![Index](./public/img/Demo_Version2-1.gif "index")
+#### 加入與編輯頁面
+##### 添加表單驗證
+![Edit/Add](./public/img/Demo_Version2-2.gif "edit/add")
+#### 餐廳內容頁面
+##### 新增刪除按鈕與位置調整
+![Detail](./public/img/Demo_Version2-3.gif "detail")
