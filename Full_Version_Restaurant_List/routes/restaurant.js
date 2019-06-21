@@ -29,16 +29,47 @@ router.post('/', (req, res) => {
 
 // search restaurants
 router.get('/search', (req, res) => {
-  console.log(req.query.keyword)
   let keyword = new RegExp(req.query.keyword, 'i')
   let keywords = {
     $or: [{ "name": keyword }, { "category": keyword }, { "description": keyword }]
   }
   Restaurant.find(keywords, (err, restaurants) => {
     if (err) return console.error(err)
-    //console.log(restaurants)
     return res.render('index', { css: ['index.css'], restaurant: restaurants })
   })
+})
+
+// filter
+router.get('/filter', (req, res) => {
+  console.log(req._parsedOriginalUrl.query)
+  switch (req._parsedOriginalUrl.query) {
+    case 'atoz':
+      Restaurant.find((err, restaurants) => {
+        if (err) return console.error(err)
+        return res.render('index', { css: ['index.css'], restaurant: restaurants })
+      }).sort({ name_en: 1 })
+      break
+    case 'ztoa':
+      Restaurant.find((err, restaurants) => {
+        if (err) return console.error(err)
+        return res.render('index', { css: ['index.css'], restaurant: restaurants })
+      }).sort({ name_en: -1 })
+      break
+    case 'category':
+      let categories = {
+        $or: [{ "category": "中東料理" }, { "category": "日式料理" }, { "category": "義式料理" }, { "category": "美式料理" }, { "category": "酒吧" }, { "category": "咖啡廳" }, { "category": "中式料理" }, { "category": "韓式料理" }]
+      }
+      Restaurant.find(categories, (err, restaurants) => {
+        if (err) return console.error(err)
+        return res.render('index', { css: ['index.css'], restaurant: restaurants })
+      }).sort({ category: 1 })
+      break
+    case 'rating':
+      Restaurant.find((err, restaurants) => {
+        if (err) return console.error(err)
+        return res.render('index', { css: ['index.css'], restaurant: restaurants })
+      }).sort({ rating: -1 })
+  }
 })
 
 // display a restaurant

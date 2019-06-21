@@ -32,7 +32,14 @@ header {
 }
 
 .search-bar .search-bar-inner h4 {
+  float:left;
   color: #9b4b4b;
+  margin:8px 0px;
+}
+
+.search-bar .search-bar-inner .btn-group{
+  float:right;
+  margin:6px auto;
 }
 
 .form-control::placeholder {
@@ -156,7 +163,7 @@ h3{
     border-radius:0rem;
     font-size:14px;
   }
-  .card-columns .btn-group form button{
+  .card-columns .btn-group .btn-danger{
     font-size:13px;
   }
   .restaurant-show-title {

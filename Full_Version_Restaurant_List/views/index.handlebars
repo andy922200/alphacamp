@@ -3,8 +3,20 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
+
+      <h4 class="mb-2">尋找餐廳：</h4>
+      <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">篩選器</button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="/restaurants/filter?atoz">A→Z</a>
+          <a class="dropdown-item" href="/restaurants/filter?ztoa">Z→A</a>
+          <a class="dropdown-item" href="/restaurants/filter?category">依類別</a>
+          <a class="dropdown-item" href="/restaurants/filter?rating">評價由高到低</a>
+        </div>
+      </div>
+      <div class="clearfix"></div>
       <form action="/restaurants/search" method="GET">
-        <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類、關鍵字描述"
             aria-label="Restaurant Name..." value="" aria-describedby="search-button" value={{keyword}}>
