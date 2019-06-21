@@ -16,41 +16,34 @@ let conditions =
       .exists()
       .isLength({ min: 10 })
       .custom((value) => {
-        if (phonePattern.test(value)) {
-          return true
-        } throw new Error('輸入區碼後請加入一個半型 - ，欄位至少要有 10 位數')
-      }),
+        return phonePattern.test(value)
+      })
+      .withMessage("電話格式要為區碼-號碼，如：02-23939889"),
     check('inputRating')
       .exists()
       .isNumeric()
       .custom((value) => {
-        if ((value >= 0) && (value <= 5)) {
-          return true
-        } throw new Error('請檢查數字')
-      }),
+        return ((value >= 0) && (value <= 5))
+      })
+      .withMessage('請檢查數字範圍'),
     check('inputImageURL')
       .exists()
       .custom((value) => {
-        if (imageURLPattern.test(value)) {
-          return true
-        } throw new Error('請檢查圖片網址')
-      }),
+        return imageURLPattern.test(value)
+      })
+      .withMessage('請檢查圖片網址'),
     check('inputGoogleMapURL')
       .exists()
       .custom((value) => {
-        if (googleMapPattern.test(value)) {
-          return true
-        } throw new Error('請檢查輸入的 Google Map 地址格式')
-      }),
+        return googleMapPattern.test(value)
+      })
+      .withMessage('請檢查輸入的 Google Map 地址格式'),
     check('inputCategory')
       .exists()
       .custom((value) => {
-        if (categories.indexOf(value) > 0) {
-          return true
-        } else {
-          throw new Error('請檢查輸入的類別是否正確')
-        }
+        return (categories.indexOf(value) > -1)
       })
+      .withMessage('請檢查輸入的類別是否正確')
   ]
 
 // specific add page
@@ -112,7 +105,7 @@ router.get('/filter', (req, res) => {
       break
     case 'category':
       let categories = {
-        $or: [{ "category": "中東料理" }, { "category": "日式料理" }, { "category": "義式料理" }, { "category": "美式料理" }, { "category": "酒吧" }, { "category": "咖啡廳" }, { "category": "中式料理" }, { "category": "韓式料理" }]
+        $or: [{ "category": "中東" }, { "category": "日式料理" }, { "category": "義式料理" }, { "category": "美式料理" }, { "category": "酒吧" }, { "category": "咖啡廳" }, { "category": "中式料理" }, { "category": "韓式料理" }]
       }
       Restaurant.find(categories, (err, restaurants) => {
         if (err) return console.error(err)
@@ -145,6 +138,7 @@ router.get('/:id/edit', (req, res) => {
 
 // modify a restaurant and check by validator
 router.put('/:id', conditions, (req, res) => {
+  //console.log(req.body.inputCategory)
   const errors = validationResult(req)
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
