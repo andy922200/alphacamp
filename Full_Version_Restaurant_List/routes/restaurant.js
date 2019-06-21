@@ -105,7 +105,7 @@ router.get('/filter', (req, res) => {
       break
     case 'category':
       let categories = {
-        $or: [{ "category": "中東" }, { "category": "日式料理" }, { "category": "義式料理" }, { "category": "美式料理" }, { "category": "酒吧" }, { "category": "咖啡廳" }, { "category": "中式料理" }, { "category": "韓式料理" }]
+        $or: [{ "category": "中東料理" }, { "category": "日式料理" }, { "category": "義式料理" }, { "category": "美式料理" }, { "category": "酒吧" }, { "category": "咖啡廳" }, { "category": "中式料理" }, { "category": "韓式料理" }]
       }
       Restaurant.find(categories, (err, restaurants) => {
         if (err) return console.error(err)
