@@ -1,6 +1,7 @@
 // routes/user.js
 const express = require('express')
 const router = express.Router()
+const User = require('../models/user')
 
 // log in page
 router.get('/login', (req, res) => {
@@ -19,7 +20,21 @@ router.get('/register', (req, res) => {
 
 // register check
 router.post('/register', (req, res) => {
-  res.send('register')
+  const { name, email, password, password2 } = req.body
+  User.findOne({ email: email }).then(user => {
+    if (user) {
+      console.log('User already exists')
+      res.render('register', { name, email, password, password2, css: ['login.css'] })
+    } else {
+      const newUser = new User({ name, email, password })
+      newUser
+        .save()
+        .then(user => {
+          res.redirect('/')
+        })
+        .catch(err => console.log(err))
+    }
+  })
 })
 
 // log out
