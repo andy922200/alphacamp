@@ -1,8 +1,3 @@
-// initialize router
-const express = require('express')
-const router = express.Router()
-const Restaurant = require('../models/restaurant.js')
-
 // initialize express-validator
 const { check, validationResult } = require('express-validator')
 
