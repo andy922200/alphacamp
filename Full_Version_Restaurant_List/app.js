@@ -21,6 +21,11 @@ db.once('open', () => {
 // load restaurant model
 const Restaurant = require('./models/restaurant')
 
+//production mode or development mode
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 // express Listener
 app.listen(port, () => {
   console.log(`Express is listening on localhost ${port}`)
@@ -59,3 +64,4 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurant')) //前為網址，後為 Router
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/authsFB'))
