@@ -4,7 +4,7 @@ const router = express.Router()
 const Restaurant = require('../models/restaurant.js')
 // initialize express-validator
 const { check, validationResult } = require('express-validator')
-const conditions = require('../models/validationRule')
+const { restaurantFormCheck, registerFormCheck } = require('../models/validationRule')
 
 // specific add page
 router.get('/new', (req, res) => {
@@ -12,7 +12,7 @@ router.get('/new', (req, res) => {
 })
 
 // create a new restaurant and check by validator
-router.post('/', conditions, (req, res) => {
+router.post('/', registerFormCheck, (req, res) => {
   const errors = validationResult(req)
   const restaurant = Restaurant({
     name: req.body.inputZhName,
@@ -104,7 +104,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // modify a restaurant and check by validator
-router.put('/:id', conditions, (req, res) => {
+router.put('/:id', restaurantFormCheck, (req, res) => {
   //console.log(req.body.inputCategory)
   const errors = validationResult(req)
   Restaurant.findById(req.params.id, (err, restaurant) => {
