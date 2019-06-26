@@ -4,7 +4,7 @@ const router = express.Router()
 
 // log in page
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.render('login', { css: ['login.css'] })
 })
 
 // log in check
@@ -14,7 +14,7 @@ router.post('/login', (req, res) => {
 
 // register page
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('register', { css: ['login.css'] })
 })
 
 // register check
