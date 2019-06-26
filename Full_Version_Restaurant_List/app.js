@@ -37,3 +37,4 @@ app.use(flash())
 // load router settings
 app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurant')) //前為網址，後為 Router
+app.use('/users', require('./routes/user'))
