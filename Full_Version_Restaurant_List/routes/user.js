@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
+const passport = require('passport')
 
 // initialize express-validator
 const { check, validationResult } = require('express-validator')
@@ -13,8 +14,12 @@ router.get('/login', (req, res) => {
 })
 
 // log in check
-router.post('/login', (req, res) => {
-  res.render('register')
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/users/login'
+  })(req, res, next)
+  req.flash('warning_msg', 'Email 或密碼錯誤，請重新輸入')
 })
 
 // register page
@@ -56,7 +61,8 @@ router.post('/register', registerFormCheck, (req, res) => {
 
 // log out
 router.get('/logout', (req, res) => {
-  res.send('logout')
+  req.logout()
+  res.redirect('/users/login')
 })
 
 

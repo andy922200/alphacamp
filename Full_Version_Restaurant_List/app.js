@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const session = require('express-session')
+const passport = require('passport')
 const flash = require('connect-flash') // express-session is required
 const app = express()
 const port = 3000
@@ -33,10 +34,15 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+// start express-session
 app.use(session({
   secret: 'asdfghjkl'
 }))
 app.use(flash())
+//start Passport
+app.use(passport.initialize())
+app.use(passport.session())
+require('./config/passport')(passport)
 
 // add local variables
 app.use((req, res, next) => {
