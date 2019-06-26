@@ -10,7 +10,7 @@ const app = express()
 const port = 3000
 
 // connect with database
-mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useCreateIndex: true })
 const db = mongoose.connection
 db.on('error', () => {
   console.log('mongodb error!')
@@ -36,7 +36,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 // start express-session
 app.use(session({
-  secret: 'asdfghjkl'
+  secret: 'asdfghjkl',
+  resave: 'false',
+  saveUninitialized: 'false'
 }))
 app.use(flash())
 //start Passport
