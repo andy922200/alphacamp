@@ -3,6 +3,7 @@ const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
+const flash = require('connect-flash')
 const app = express()
 const port = 3000
 
@@ -31,6 +32,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+app.use(flash())
 
 // load router settings
 app.use('/', require('./routes/home'))

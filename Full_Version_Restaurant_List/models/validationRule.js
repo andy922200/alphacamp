@@ -10,18 +10,18 @@ let conditions =
   [
     check('inputPhone')
       .exists()
-      .isLength({ min: 10 })
+      .isLength({ min: 10 }).withMessage("請檢查輸入的電話長度")
       .custom((value) => {
         return phonePattern.test(value)
       })
       .withMessage("電話格式要為區碼-號碼，如：02-23939889"),
     check('inputRating')
       .exists()
-      .isNumeric()
+      .isNumeric().withMessage('請確定有輸入數字')
       .custom((value) => {
         return ((value >= 0) && (value <= 5))
       })
-      .withMessage('請檢查數字範圍'),
+      .withMessage("請檢查數字範圍"),
     check('inputImageURL')
       .exists()
       .custom((value) => {

@@ -26,7 +26,14 @@ router.post('/', conditions, (req, res) => {
     description: req.body.inputDescription
   })
   if (!errors.isEmpty()) {
-    res.render('new', { css: ['edit.css'] })
+    let errorMessages = []
+    console.log(errors)
+    //console.log(errors.array()[0]['msg'])
+    for (let i = 0; i < errors.array().length; i++) {
+      errorMessages.push({ message: errors.array()[i]['msg'] })
+      //console.log(errorMessages)
+    }
+    res.render('new', { css: ['edit.css'], errorMessages: errorMessages })
   } else {
     restaurant.save(err => {
       if (err) return console.error(err)
@@ -113,8 +120,13 @@ router.put('/:id', conditions, (req, res) => {
     restaurant.description = req.body.inputDescription
 
     if (!errors.isEmpty()) {
+      let errorMessages = []
       //console.log(errors.array()[0]['msg'])
-      res.render('edit', { css: ['edit.css'], restaurant: restaurant })
+      for (let i = 0; i < errors.array().length; i++) {
+        errorMessages.push({ message: errors.array()[i]['msg'] })
+        //console.log(errorMessages)
+      }
+      res.render('edit', { css: ['edit.css'], restaurant: restaurant, errorMessages: errorMessages })
     } else {
       restaurant.save(err => {
         if (err) return console.error(err)
