@@ -62,7 +62,7 @@ db.once('open', () => {
       location: 'location' + i,
       phone: '02-2837463' + i,
       google_map: 'https://goo.gl/maps/' + i,
-      rating: i,
+      rating: i - 1,
       description: 'description' + i,
       userID: newUser2._id
     })
