@@ -90,6 +90,10 @@ h3{
   text-align:center;
 }
 
+h6{
+  color:rgb(49, 48, 48);
+}
+
 /*title hover effect*/
 .card-body:hover{
   background-color: yellow;
@@ -119,10 +123,10 @@ h3{
 
 .card-columns .btn-group button{
   margin: 5px auto;
-  width:70px;
+  width:80px;
   height:40px;
   border-radius:0px;
-  font-size:14px;
+  font-size:12px;
 }
 
 /*清除浮動效果，讓高度出現，方法II*/
