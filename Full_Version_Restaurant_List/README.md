@@ -4,12 +4,19 @@
 
 ## 環境建置與需求
 * [Node.js version 10.16.0 (LTS)](https://nodejs.org/en/)
+* [bcryptjs 2.4.3](https://www.npmjs.com/package/bcryptjs)
+* [body-parser 1.19.0](https://www.npmjs.com/package/body-parser)
+* [connect-flash 0.1.1](https://www.npmjs.com/package/connect-flash)
+* [dotenv 8.0.0](https://www.npmjs.com/package/dotenv)
 * [Express 4.17.1](https://www.npmjs.com/package/express)
 * [Express-Handlebars 3.1.0](https://www.npmjs.com/package/handlebars)
-* [body-parser 1.19.0](https://www.npmjs.com/package/body-parser)
+* [express-session 1.16.2](https://www.npmjs.com/package/express-session)
+* [express-validator 6.0.0](https://www.npmjs.com/package/express-validator)
 * [method-override 3.0.0](https://www.npmjs.com/package/method-override)
 * [mongoose 5.6.0](https://www.npmjs.com/package/mongoose)
-* [express-validator 6.0.0](https://www.npmjs.com/package/express-validator)
+* [passport 0.4.0](https://www.npmjs.com/package/passport)
+* [passport-facebook 3.0.0](https://www.npmjs.com/package/passport-facebook)
+* [passport-local 1.0.0](https://www.npmjs.com/package/passport-local)
 
 ## How to use? 如何使用？
 1. 利用 git 或是 cmd 在目標資料夾下輸入以下指令
@@ -36,8 +43,12 @@ cd ~/mongodb/bin/
 6. 最後打開瀏覽器，輸入 localhost:3000 就可開始使用
 
 ## 螢幕截圖
-### 初始版 具備基本 CRUD 和 RWD 
-![Index](./public/img/Demo_Version1.gif "index")
+### 第三版 個人化
+#### 註冊/登入頁面，有表格提示訊息
+![Index](./public/img/Demo_Version3-1.gif "login/logout/register")
+#### 每人獨立清單
+![Index](./public/img/Demo_Version3-2.gif "personalized lists")
+
 ### 第二版 介面與功能優化
 #### 首頁 
 ##### 篩選器、介面調整、搜尋功能、滑鼠 :hover 顏色變化
@@ -48,3 +59,5 @@ cd ~/mongodb/bin/
 #### 餐廳內容頁面
 ##### 新增刪除按鈕與位置調整
 ![Detail](./public/img/Demo_Version2-3.gif "detail")
+### 初始版 具備基本 CRUD 和 RWD 
+![Index](./public/img/Demo_Version1.gif "index")
