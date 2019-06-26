@@ -16,6 +16,9 @@ router.get('/login', (req, res) => {
 
 // log in check
 router.post('/login', (req, res, next) => {
+  if ((!req.body.email) || (!req.body.password)) {
+    req.flash('warning_msg', '請檢查欄位是否空白')
+  }
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/users/login'
