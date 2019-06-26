@@ -13,7 +13,7 @@ router.get('/new', authenticated, (req, res) => {
 })
 
 // create a new restaurant and check by validator
-router.post('/', authenticated, registerFormCheck, (req, res) => {
+router.post('/', authenticated, restaurantFormCheck, (req, res) => {
   const errors = validationResult(req)
   const restaurant = Restaurant({
     name: req.body.inputZhName,
@@ -24,7 +24,8 @@ router.post('/', authenticated, registerFormCheck, (req, res) => {
     phone: req.body.inputPhone,
     google_map: req.body.inputGoogleMapURL,
     rating: req.body.inputRating,
-    description: req.body.inputDescription
+    description: req.body.inputDescription,
+    userID: req.user._id
   })
   if (!errors.isEmpty()) {
     let errorMessages = []
@@ -46,10 +47,7 @@ router.post('/', authenticated, registerFormCheck, (req, res) => {
 // search restaurants
 router.get('/search', authenticated, (req, res) => {
   let keyword = new RegExp(req.query.keyword, 'i')
-  let keywords = {
-    $or: [{ "name": keyword }, { "category": keyword }, { "description": keyword }]
-  }
-  Restaurant.find(keywords, (err, restaurants) => {
+  Restaurant.find({ userID: req.user._id, "$or": [{ "name": keyword }, { "category": keyword }, { "description": keyword }] }, (err, restaurants) => {
     if (err) return console.error(err)
     return res.render('index', { css: ['index.css'], restaurant: restaurants })
   })
@@ -90,7 +88,7 @@ router.get('/filter', authenticated, (req, res) => {
 
 // display a restaurant
 router.get('/:id', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findById({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('detail', { css: ['detail.css'], restaurant: restaurant })
   })
@@ -98,7 +96,7 @@ router.get('/:id', authenticated, (req, res) => {
 
 // specific modification page
 router.get('/:id/edit', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findById({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('edit', { css: ['edit.css'], restaurant: restaurant })
   })
@@ -108,7 +106,7 @@ router.get('/:id/edit', authenticated, (req, res) => {
 router.put('/:id', authenticated, restaurantFormCheck, (req, res) => {
   //console.log(req.body.inputCategory)
   const errors = validationResult(req)
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findById({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.name = req.body.inputZhName
     restaurant.name_en = req.body.inputEnName
@@ -140,7 +138,7 @@ router.put('/:id', authenticated, restaurantFormCheck, (req, res) => {
 // delete a restaurant
 router.delete('/:id/delete', authenticated, (req, res) => {
   //console.log(req.params.id)
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findById({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     restaurant.remove(err => {
       if (err) return console.error(err)
