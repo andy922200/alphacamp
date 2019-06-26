@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const passport = require('passport')
+const bcrypt = require('bcryptjs')
 
 // initialize express-validator
 const { check, validationResult } = require('express-validator')
@@ -48,13 +49,20 @@ router.post('/register', registerFormCheck, (req, res) => {
       res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
     } else {
       const newUser = new User({ name, email, password })
-      newUser
-        .save()
-        .then(user => {
-          req.flash('success_msg', '註冊成功，請登入')
-          res.redirect('/users/login')
+      //use bcrypt to form 'hash password'
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err
+          newUser.password = hash
+          newUser
+            .save()
+            .then(user => {
+              req.flash('success_msg', '註冊成功，請登入')
+              res.redirect('/users/login')
+            })
+            .catch(err => console.log(err))
         })
-        .catch(err => console.log(err))
+      })
     }
   })
 })
