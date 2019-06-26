@@ -2,17 +2,18 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant.js')
+const { authenticated } = require('../config/auth')
 // initialize express-validator
 const { check, validationResult } = require('express-validator')
 const { restaurantFormCheck, registerFormCheck } = require('../models/validationRule')
 
 // specific add page
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
   return res.render('new', { css: ['edit.css'] })
 })
 
 // create a new restaurant and check by validator
-router.post('/', registerFormCheck, (req, res) => {
+router.post('/', authenticated, registerFormCheck, (req, res) => {
   const errors = validationResult(req)
   const restaurant = Restaurant({
     name: req.body.inputZhName,
@@ -43,7 +44,7 @@ router.post('/', registerFormCheck, (req, res) => {
 })
 
 // search restaurants
-router.get('/search', (req, res) => {
+router.get('/search', authenticated, (req, res) => {
   let keyword = new RegExp(req.query.keyword, 'i')
   let keywords = {
     $or: [{ "name": keyword }, { "category": keyword }, { "description": keyword }]
@@ -55,7 +56,7 @@ router.get('/search', (req, res) => {
 })
 
 // filter
-router.get('/filter', (req, res) => {
+router.get('/filter', authenticated, (req, res) => {
   //console.log(req._parsedOriginalUrl.query)
   switch (req._parsedOriginalUrl.query) {
     case 'atoz':
@@ -88,7 +89,7 @@ router.get('/filter', (req, res) => {
 })
 
 // display a restaurant
-router.get('/:id', (req, res) => {
+router.get('/:id', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('detail', { css: ['detail.css'], restaurant: restaurant })
@@ -96,7 +97,7 @@ router.get('/:id', (req, res) => {
 })
 
 // specific modification page
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('edit', { css: ['edit.css'], restaurant: restaurant })
@@ -104,7 +105,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // modify a restaurant and check by validator
-router.put('/:id', restaurantFormCheck, (req, res) => {
+router.put('/:id', authenticated, restaurantFormCheck, (req, res) => {
   //console.log(req.body.inputCategory)
   const errors = validationResult(req)
   Restaurant.findById(req.params.id, (err, restaurant) => {
@@ -137,7 +138,7 @@ router.put('/:id', restaurantFormCheck, (req, res) => {
 })
 
 // delete a restaurant
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', authenticated, (req, res) => {
   //console.log(req.params.id)
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
