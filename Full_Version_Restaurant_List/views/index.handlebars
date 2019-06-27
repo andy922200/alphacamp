@@ -59,15 +59,14 @@
           <div class="card-footer" id="choices">
             <div class="btn-group" role="group" aria-label="Basic example">
               <a href="/restaurants/{{this._id}}/edit" class="text-secondary">
-                <button type="button" class="btn btn btn-secondary">Edit</button>
+                <button type="button" class="btn btn btn-secondary">編輯</button>
               </a>
               <a href="/restaurants/{{this._id}}" class="text-secondary">
-                <button type="button" class="btn btn btn-info">Detail</button>
+                <button type="button" class="btn btn btn-info">詳情</button>
               </a>
 
               <!--Button trigger modal-->
-              <button type="button" class="btn btn-danger" data-toggle="modal"
-                data-target="#a{{this.id}}">Delete</button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#a{{this.id}}">刪除</button>
               <!--Modal-->
               <div class="modal fade" id="a{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">

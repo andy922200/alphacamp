@@ -123,10 +123,10 @@ h6{
 
 .card-columns .btn-group button{
   margin: 5px auto;
-  width:80px;
+  width:85px;
   height:40px;
   border-radius:0px;
-  font-size:12px;
+  font-size:14px;
 }
 
 /*清除浮動效果，讓高度出現，方法II*/
@@ -165,10 +165,10 @@ h6{
     height:50px;
     padding: 0px 1px;
     border-radius:0rem;
-    font-size:14px;
+    font-size:12px;
   }
   .card-columns .btn-group .btn-danger{
-    font-size:13px;
+    font-size:12px;
   }
   .restaurant-show-title {
     font-size: 1.8rem;
@@ -189,6 +189,9 @@ h6{
     margin:0px 0px 3px 0px;
     min-width:120px;
     height:40px;
+  }
+  .card-columns .btn-group .btn-danger{
+    font-size:12px;
   }
   .card img{
     height: auto;
