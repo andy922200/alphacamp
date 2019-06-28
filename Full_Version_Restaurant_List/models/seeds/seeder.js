@@ -11,9 +11,6 @@ db.on('error', () => {
 })
 db.once('open', () => {
   console.log('db connected!')
-  let name = ''
-  let email = ''
-  let password = ''
   let users = [{ name: '', email: 'user1@example.com', password: '12345678' }, { name: '', email: 'user2@example.com', password: '12345678' }]
   users.forEach((user, index) => {
     name = user.name
