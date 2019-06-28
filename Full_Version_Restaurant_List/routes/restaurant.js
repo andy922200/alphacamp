@@ -54,31 +54,31 @@ router.get('/search', authenticated, (req, res) => {
 })
 
 // filter
+function display(res, err, restaurants) {
+  if (err) return console.error(err)
+  return res.render('index', { css: ['index.css'], restaurant: restaurants })
+}
+
 router.get('/filter', authenticated, (req, res) => {
-  //console.log(req._parsedOriginalUrl.query)
   switch (req._parsedOriginalUrl.query) {
     case 'atoz':
       Restaurant.find({ userID: req.user._id }, (err, restaurants) => {
-        if (err) return console.error(err)
-        return res.render('index', { css: ['index.css'], restaurant: restaurants })
+        display(res, err, restaurants)
       }).sort({ name_en: 1 })
       break
     case 'ztoa':
       Restaurant.find({ userID: req.user._id }, (err, restaurants) => {
-        if (err) return console.error(err)
-        return res.render('index', { css: ['index.css'], restaurant: restaurants })
+        display(res, err, restaurants)
       }).sort({ name_en: -1 })
       break
     case 'category':
       Restaurant.find({ userID: req.user._id, "$or": [{ "category": "中東料理" }, { "category": "日式料理" }, { "category": "義式料理" }, { "category": "美式料理" }, { "category": "酒吧" }, { "category": "咖啡" }, { "category": "中式料理" }, { "category": "韓式料理" }] }, (err, restaurants) => {
-        if (err) return console.error(err)
-        return res.render('index', { css: ['index.css'], restaurant: restaurants })
+        display(res, err, restaurants)
       }).sort({ category: 1 })
       break
     case 'rating':
       Restaurant.find({ userID: req.user._id }, (err, restaurants) => {
-        if (err) return console.error(err)
-        return res.render('index', { css: ['index.css'], restaurant: restaurants })
+        display(res, err, restaurants)
       }).sort({ rating: -1 })
   }
 })
