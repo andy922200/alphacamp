@@ -44,21 +44,20 @@ router.post('/', authenticated, restaurantFormCheck, (req, res) => {
   }
 })
 
-// search restaurants
-router.get('/search', authenticated, (req, res) => {
-  let keyword = new RegExp(req.query.keyword, 'i')
-  Restaurant.find({ userID: req.user._id, "$or": [{ "name": keyword }, { "category": keyword }, { "description": keyword }] }, (err, restaurants) => {
-    if (err) return console.error(err)
-    return res.render('index', { css: ['index.css'], restaurant: restaurants })
-  })
-})
-
-// filter
+// search restaurants & filter
 function display(res, err, restaurants) {
   if (err) return console.error(err)
   return res.render('index', { css: ['index.css'], restaurant: restaurants })
 }
 
+router.get('/search', authenticated, (req, res) => {
+  let keyword = new RegExp(req.query.keyword, 'i')
+  Restaurant.find({ userID: req.user._id, "$or": [{ "name": keyword }, { "category": keyword }, { "description": keyword }] }, (err, restaurants) => {
+    display(res, err, restaurants)
+  })
+})
+
+// filter
 router.get('/filter', authenticated, (req, res) => {
   switch (req._parsedOriginalUrl.query) {
     case 'atoz':
