@@ -12,60 +12,46 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('db connected!')
   let name = ''
-  let email = 'user1@example.com'
-  let password = '12345678'
-  let newUser1 = new User({ name, email, password })
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newUser1.password, salt, (err, hash) => {
-      if (err) throw err
-      newUser1.password = hash
-      newUser1
-        .save()
-        .catch(err => console.log(err))
-    })
+  let email = ''
+  let password = ''
+  let users = [{ name: '', email: 'user1@example.com', password: '12345678' }, { name: '', email: 'user2@example.com', password: '12345678' }]
+  users.forEach((user, index) => {
+    name = user.name
+    email = user.email
+    password = user.password
+    GenerateUser(name, email, password, index)
   })
-  for (let i = 1; i <= 3; i++) {
-    Restaurant.create({
-      name: 'name' + i,
-      name_en: 'name_en' + i,
-      category: '咖啡',
-      image: 'https://picsum.photos/id/' + i + '/200/200.jpg',
-      location: 'location' + i,
-      phone: '02-2837463' + i,
-      google_map: 'https://goo.gl/maps/' + i,
-      rating: i,
-      description: 'description' + i,
-      userID: newUser1._id
+
+
+  function GenerateUser(name, email, password, index) {
+    let newUser = new User({ name, email, password })
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(newUser.password, salt, (err, hash) => {
+        if (err) throw err
+        newUser.password = hash
+        newUser
+          .save((err, user) => {
+            GenerateRestaurant(index, user)
+          })
+      })
     })
-    console.log('done')
   }
 
-  email = 'user2@example.com'
-  password = '12345678'
-  let newUser2 = new User({ name, email, password })
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newUser2.password, salt, (err, hash) => {
-      if (err) throw err
-      newUser2.password = hash
-      newUser2
-        .save()
-        .catch(err => console.log(err))
-    })
-  })
-
-  for (let i = 4; i <= 6; i++) {
-    Restaurant.create({
-      name: 'name' + i,
-      name_en: 'name_en' + i,
-      category: '咖啡',
-      image: 'https://picsum.photos/id/' + i + '/200/200.jpg',
-      location: 'location' + i,
-      phone: '02-2837463' + i,
-      google_map: 'https://goo.gl/maps/' + i,
-      rating: i - 1,
-      description: 'description' + i,
-      userID: newUser2._id
-    })
-    console.log('done')
+  function GenerateRestaurant(index, user) {
+    for (let i = 3 * index + 1; i <= 3 * (index + 1); i++) {
+      Restaurant.create({
+        name: 'name' + i,
+        name_en: 'name_en' + i,
+        category: '咖啡',
+        image: 'https://picsum.photos/id/' + i + '/200/200.jpg',
+        location: 'location' + i,
+        phone: '02-2837463' + i,
+        google_map: 'https://goo.gl/maps/' + i,
+        rating: i,
+        description: 'description' + i,
+        userID: user._id
+      })
+    }
+    console.log('seed data ' + (index + 1) + ' is generated!')
   }
 })
