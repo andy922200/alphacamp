@@ -1,0 +1,41 @@
+<!-- ./layouts/main.handlebars -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Expense Tracker 繁體中文版</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+  <!--不同頁面使用不同CSS-->
+  {{#each css}}
+  <link rel="stylesheet" href="/stylesheets/{{this}}">
+  {{/each}}
+</head>
+
+<body>
+  <header>
+    <!-- Navigation-->
+    <div class="container">
+      <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand">Navbar</a>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  <!-- partial templates will replace the part of "body" here -->
+  {{{ body }}}
+  <!--JavaScript Files-->
+  <script src="/javascripts/jquery-3.4.1.min.js"></script>
+  <script src="/javascripts/popper.min.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
+</body>
+
+</html>

@@ -1,132 +1,59 @@
+/* ========== CSS 全區設定 ========== */
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+* {
+  /*border-box：實際寬高＝所設定的數值(已包含border和padding)*/
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom:5px;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
 header {
   overflow: hidden;
 }
 
-.navbar .navbar-brand {
-  color: #4592af;
+/*a, a:hover, a:focus {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}*/
+
+img {
+  height: auto;
+  display: block;
 }
 
-.navbar .navbar-brand:hover {
-  color: #226089;
+.container{
+  max-width:1170px;
+  margin:0px;
+  padding: 5px 0px;
 }
 
-.banner {
-  position: relative;
-  z-index: -1;
-  margin: -5px;
-  height: 360px;
-  background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
-  background-size: cover;
-  filter: blur(3px);
-}
-
-.search-bar .search-bar-outer {
-  margin: 0 auto;
-  max-width: 680px;
-  background-color: #fce2cf;
-  border-radius: 8px;
-  padding: 20px 30px;
-  border: 0;
-  margin-top: -60px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.search-bar .search-bar-inner h4 {
-  float:left;
-  color: #9b4b4b;
-  margin:8px 0px;
-}
-
-.search-bar .search-bar-inner .btn-group{
-  float:right;
-  margin:6px auto;
-}
-
-.form-control::placeholder {
-  color: #aaaaaa;
-  font-size: 0.8rem;
-}
-
-.btn-major {
-  background-color: #9b4b4b;
-  color: white;
-}
-
-.form-control:focus {
-  box-shadow: none;
-  border-color: #ced4da;
-}
-
-.card {
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.card img{
-  height: 180px;
-}
-
-.card-title{
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-
-.restaurant-category {
-  color: #666666;
-  font-size: 0.8rem;
-}
-
-.restaurant-show-title {
-  position: relative;
-  top: -100px;
-  color: white;
-  text-align: center;
-  font-size: 3rem;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-h3{
-  margin-top:5px;
-  text-align:center;
-}
-
-h6{
-  color:rgb(49, 48, 48);
-}
-
-/*title hover effect*/
-.card-body:hover{
-  background-color: yellow;
-}
-
-/*BUTTONS*/
-#create{
-  display:flex;
-  justify-content: space-between;
-  width:1200px
-}
-
-#create button{
-  margin:0px 0px 3px 10px;
-  min-width:120px;
-  height:40px;
-}
-
-.card-columns .btn-group{
-  float:right;
-}
-
-#choices{
-  display:flex;
-  justify-content: center;
-}
-
-.card-columns .btn-group button{
-  margin: 5px auto;
-  width:85px;
-  height:40px;
-  border-radius:0px;
-  font-size:14px;
+.session{
+  max-width: 1170px;
+  margin: 5px 5px;
 }
 
 /*清除浮動效果，讓高度出現，方法II*/
@@ -137,81 +64,4 @@ h6{
   content: " ";
   clear: both;
   height: 0;
-}
-
-/*RWD*/
-@media screen and (min-width:576px) and (max-width: 991px) {
-  #create{
-    display:flex;
-    justify-content: space-between;
-    width:900px;
-  }
-
-  #create button{
-    margin:0px 0px 3px 0px;
-    min-width:120px;
-    height:40px;
-  }
-  #choices{
-  display:flex;
-  justify-content: center;
-  }
-  .card img{
-    height: 120px;
-  }
-  .card-columns .btn-group button{
-    margin: 5px auto;
-    max-width:45px;
-    height:50px;
-    padding: 0px 1px;
-    border-radius:0rem;
-    font-size:12px;
-  }
-  .card-columns .btn-group .btn-danger{
-    font-size:12px;
-  }
-  .restaurant-show-title {
-    font-size: 1.8rem;
-  }
-  .modal-footer .btn-group .btn-primary{
-    font-size:12px;
-  }
-}
-
-@media screen and (min-width:340px) and (max-width:575px){
-  #create{
-    display:flex;
-    justify-content: space-between;
-    width:500px;
-  }
-
-  #create button{
-    margin:0px 0px 3px 0px;
-    min-width:120px;
-    height:40px;
-  }
-  .card-columns .btn-group .btn-danger{
-    font-size:12px;
-  }
-  .card img{
-    height: auto;
-  }
-}
-
-@media screen and (max-width:340px){
-  #create{
-    display:flex;
-    justify-content: center;
-    width:300px;
-  }
-  #create a{
-    font-size:18px;
-  }
-  #create button{
-    min-width:60px;
-    font-size:12px;
-  }
-  .card img{
-    height: auto;
-  }
 }
