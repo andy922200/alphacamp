@@ -5,7 +5,7 @@ const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
-const flash = require('connect-flash')
+//const flash = require('connect-flash')
 const app = express()
 const port = 3000
 
@@ -41,7 +41,7 @@ app.use(session({
   resave: 'false',
   saveUninitialized: 'false'
 }))
-app.use(flash())
+//app.use(flash())
 
 // initialize Passport
 app.use(passport.initialize())
