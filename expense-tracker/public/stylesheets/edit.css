@@ -106,3 +106,19 @@ nav a .btn{
   padding:30px;
   margin:0px auto;
 }
+
+/*RWD*/
+@media screen and (min-width:320px) and (max-width:419px){
+  .form-group{
+  margin: 0px auto;
+  }
+  .createForm{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: antiquewhite;
+  }
+  .form-group input, .form-group textarea{
+  font-size:28px;
+  margin:10px;
+}
+}
