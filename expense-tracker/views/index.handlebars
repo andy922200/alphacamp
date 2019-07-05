@@ -1,31 +1,34 @@
 <!-- views/index.handlebars-->
 <div class="filter">
-  <div class="form-group" id='monthFilter'>
-    <select class="form-control" id="monthFilter">
-      <option>月份</option>
-      <option value='Jan'>一月</option>
-      <option value='Feb'>二月</option>
-      <option value='Mar'>三月</option>
-      <option value='Apr'>四月</option>
-      <option value='May'>五月</option>
-      <option value='Jun'>六月</option>
-      <option value='Jul'>七月</option>
-      <option value='Aug'>八月</option>
-      <option value='Sep'>九月</option>
-      <option value='Oct'>十月</option>
-      <option value='Nov'>十一月</option>
-      <option value='Dec'>十二月</option>
-    </select>
+  <div class="btn-group" id='monthFilter'>
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">月份</button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" href="/records/filter?Jan">一月</a>
+      <a class="dropdown-item" href="/records/filter?Feb">二月</a>
+      <a class="dropdown-item" href="/records/filter?Mar">三月</a>
+      <a class="dropdown-item" href="/records/filter?Apr">四月</a>
+      <a class="dropdown-item" href="/records/filter?May">五月</a>
+      <a class="dropdown-item" href="/records/filter?Jun">六月</a>
+      <a class="dropdown-item" href="/records/filter?Jul">七月</a>
+      <a class="dropdown-item" href="/records/filter?Aug">八月</a>
+      <a class="dropdown-item" href="/records/filter?Sep">九月</a>
+      <a class="dropdown-item" href="/records/filter?Oct">十月</a>
+      <a class="dropdown-item" href="/records/filter?Nov">十一月</a>
+      <a class="dropdown-item" href="/records/filter?Dec">十二月</a>
+    </div>
   </div>
-  <div class="form-group" id='categoryFilter'>
-    <select class="form-control" id="categoryFilter">
-      <option>種類</option>
-      <option value='home'>家居物業</option>
-      <option value='transport'>交通出行</option>
-      <option value='entertain'>休閒娛樂</option>
-      <option value='food'>餐飲食品</option>
-      <option value='other'>其他</option>
-    </select>
+
+  <div class="btn-group" id='categoryFilter'>
+    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">種類</button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" href="/records/filter?home">家居物業</a>
+      <a class="dropdown-item" href="/records/filter?transport">交通出行</a>
+      <a class="dropdown-item" href="/records/filter?entertain">休閒娛樂</a>
+      <a class="dropdown-item" href="/records/filter?food">餐飲食品</a>
+      <a class="dropdown-item" href="/records/filter?other">其他</a>
+    </div>
   </div>
 </div>
 <div id="totalAmount">

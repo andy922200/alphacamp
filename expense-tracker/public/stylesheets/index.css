@@ -80,15 +80,14 @@ nav a .btn{
   justify-content: center;
 }
 
-.filter .form-group{
+.filter .btn-group{
   margin:20px;
+  width:130px;
+  height:50px;
 }
 
-.filter .form-group select{
+.filter .btn-group button{
   font-size:20px;
-  width:130px;
-  text-align: center;
-  text-align-last: center;
 }
 
 /*Total Amount*/
