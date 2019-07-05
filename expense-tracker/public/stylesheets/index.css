@@ -45,6 +45,7 @@ img {
   display: block;
 }
 
+/*
 .container{
   max-width:1170px;
   margin:0px;
@@ -54,7 +55,7 @@ img {
 .session{
   max-width: 1170px;
   margin: 5px 5px;
-}
+}*/
 
 /*清除浮動效果，讓高度出現，方法II*/
 .clearfix:after{
@@ -65,3 +66,23 @@ img {
   clear: both;
   height: 0;
 }
+
+/*FILTER*/
+.filter{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
+.filter .form-group{
+  margin:20px;
+}
+
+.filter .form-group select{
+  font-size:20px;
+  width:130px;
+  text-align: center;
+  text-align-last: center;
+}
+
+
