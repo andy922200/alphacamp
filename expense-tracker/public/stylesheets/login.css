@@ -3,7 +3,7 @@ header {
 }
 
 .navbar .navbar-brand {
-  color: #4592af;
+  color: #fcfcfc;
 }
 
 .navbar .navbar-brand:hover {
@@ -21,6 +21,12 @@ header {
 }
 
 /*BUTTONS*/
+/*Log in/out Button*/
+nav a .btn{
+  padding: 15px;
+  font-size:20px;
+}
+
 #create{
   display:flex;
   justify-content: space-between;
