@@ -147,6 +147,33 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // modify a record and check by validator
+router.put('/:id', recordFormCheck, (req, res) => {
+  const errors = validationResult(req)
+  Record.findById({ _id: req.params.id }, (err, record) => {
+
+    if (err) return console.error(err)
+    record.name = req.body.contentName
+    record.category = req.body.category
+    record.date = req.body.date
+    record.amount = req.body.amount
+
+    if (!errors.isEmpty()) {
+      let errorMessages = []
+      //console.log(errors.array()[0]['msg'])
+      for (let i = 0; i < errors.array().length; i++) {
+        errorMessages.push({ message: errors.array()[i]['msg'] })
+        //console.log(errorMessages)
+      }
+      console.log(record)
+      res.render('edit', { css: ['edit.css'], record: record, errorMessages: errorMessages })
+    } else {
+      record.save(err => {
+        if (err) return console.error(err)
+        return res.redirect('/')
+      })
+    }
+  })
+})
 
 // delete a record
 router.delete('/:id', (req, res) => {
