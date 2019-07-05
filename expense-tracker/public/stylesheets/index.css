@@ -104,3 +104,58 @@ nav a .btn{
   margin-left:40px;
 }
 
+/*Cell*/
+.record{
+  display:flex;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell{
+  width:600px;
+}
+
+.left-cell, .middle-cell{
+  float: left;
+}
+
+.left-cell .icon{
+  float:left;
+}
+.left-cell .icon i{
+  font-size:80px;
+  color:grey;
+  width:90px;
+}
+
+.left-cell .description{
+  float:right;
+  margin-left:20px;
+}
+
+.left-cell .description p:first-child{
+ font-size:25px;
+}
+
+.left-cell .description p:last-child{
+ font-size:20px;
+}
+
+.middle-cell p{
+  float:right;
+  margin: 0px 20px 0px 70px;
+  height: 80px; 
+  font-size:50px;
+}
+
+.right-cell{
+  float:right;
+  margin-left:0px;
+}
+
+.right-cell a button, .right-cell button{
+  margin:5px 10px 0px 10px;
+  font-size:18px;
+  padding:24px;
+}

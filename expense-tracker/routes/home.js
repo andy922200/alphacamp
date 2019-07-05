@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
     for (let i = 0; i < result.length; i++) {
       totalAmount += result[i]
     }
-    //console.log(totalAmount)
+    //console.log(records)
     if (err) return console.log(err)
-    return res.render('index', { css: ['index.css'], records: records, totalAmount: totalAmount })
+    return res.render('index', { css: ['index.css'], record: records, totalAmount: totalAmount })
   })
 })
 
