@@ -2,13 +2,39 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
+// initialize express-validator
+const { check, validationResult } = require('express-validator')
 
 // specific add page
 router.get('/new', (req, res) => {
   return res.render('new', { css: ['edit.css'] })
 })
 // create a new record and check by validator
-
+router.post('/', (req, res) => {
+  const errors = validationResult(req)
+  const record = Record({
+    name: req.body.contentName,
+    category: req.body.category,
+    date: req.body.date,
+    amount: req.body.amount,
+    //userID: req.user._id
+  })
+  if (!errors.isEmpty()) {
+    let errorMessages = []
+    console.log(errors)
+    //console.log(errors.array()[0]['msg'])
+    for (let i = 0; i < errors.array().length; i++) {
+      errorMessages.push({ message: errors.array()[i]['msg'] })
+      //console.log(errorMessages)
+    }
+    res.render('new', { css: ['edit.css'], errorMessages: errorMessages })
+  } else {
+    record.save(err => {
+      if (err) return console.error(err)
+      return res.redirect('/')
+    })
+  }
+})
 
 // filter
 function display(res, err, records) {
