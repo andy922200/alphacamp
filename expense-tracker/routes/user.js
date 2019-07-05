@@ -26,6 +26,50 @@ router.post('/login', (req, res, next) => {
   req.flash('warning_msg', 'Email 或密碼錯誤，請重新輸入')
 })
 
+// register page
+router.get('/register', (req, res) => {
+  res.render('register', { css: ['login.css'] })
+})
+
+// register check
+router.post('/register', registerFormCheck, (req, res) => {
+  const { name, email, password, password2 } = req.body
+  const errors = validationResult(req)
+  let errorMessages = []
+  User.findOne({ email: email }).then(user => {
+    if (user) {
+      errorMessages.push({ message: '此 Email 已有人使用' })
+      res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
+    } else if (password !== password2) {
+      errorMessages.push({ message: '密碼輸入不一致，請再次輸入' })
+      res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
+    } else if (!errors.isEmpty()) {
+      //console.log(errors.array()[0]['msg'])
+      for (let i = 0; i < errors.array().length; i++) {
+        errorMessages.push({ message: errors.array()[i]['msg'] })
+        //console.log(errorMessages)
+      }
+      res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
+    } else {
+      const newUser = new User({ name, email, password })
+      //use bcrypt to form 'hash password'
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err
+          newUser.password = hash
+          newUser
+            .save()
+            .then(user => {
+              req.flash('success_msg', '註冊成功，請登入')
+              res.redirect('/users/login')
+            })
+            .catch(err => console.log(err))
+        })
+      })
+    }
+  })
+})
+
 // log out
 router.get('/logout', (req, res) => {
   req.logout()

@@ -21,4 +21,4 @@ let registerFormCheck = [
     .isLength({ min: 8 }).withMessage("請至少輸入八位英數字")
 ]
 
-module.exports = { recordFormCheck }
+module.exports = { recordFormCheck, registerFormCheck }
