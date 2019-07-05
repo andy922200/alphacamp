@@ -4,13 +4,14 @@ const router = express.Router()
 const Record = require('../models/record')
 // initialize express-validator
 const { check, validationResult } = require('express-validator')
+const { recordFormCheck } = require('../models/validationRule')
 
 // specific add page
 router.get('/new', (req, res) => {
   return res.render('new', { css: ['edit.css'] })
 })
 // create a new record and check by validator
-router.post('/', (req, res) => {
+router.post('/', recordFormCheck, (req, res) => {
   const errors = validationResult(req)
   const record = Record({
     name: req.body.contentName,
