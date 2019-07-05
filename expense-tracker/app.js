@@ -15,6 +15,11 @@ app.listen(port, () => {
   console.log(`Express is listening on localhost ${port}`)
 })
 
+//production mode or development mode
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 // connect with database
 mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true })
 const db = mongoose.connection
@@ -58,12 +63,9 @@ app.use((req, res, next) => {
   next()
 })
 
-//production mode or development mode
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
-
 // load router settings
 app.use('/', require('./routes/home'))
 app.use('/records', require('./routes/records'))
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/authsFB'))
+app.use('/auth', require('./routes/authsGoogle'))
