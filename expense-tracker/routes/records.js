@@ -4,7 +4,9 @@ const router = express.Router()
 const Record = require('../models/record')
 
 // specific add page
-
+router.get('/new', (req, res) => {
+  return res.render('new', { css: ['edit.css'] })
+})
 // create a new record and check by validator
 
 
