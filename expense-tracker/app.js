@@ -1,5 +1,6 @@
 const express = require('express')
 const handlebars = require('express-handlebars')
+const handlebarsHelper = require('../expense-tracker/public/javascripts/handlebarsHelper')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
