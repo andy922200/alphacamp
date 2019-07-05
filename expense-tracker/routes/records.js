@@ -51,62 +51,62 @@ function display(res, err, records) {
 router.get('/filter', (req, res) => {
   switch (req._parsedOriginalUrl.query) {
     case 'Jan':
-      Record.find({ "date": { $regex: /^\d{4}\/01\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-01-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Feb':
-      Record.find({ "date": { $regex: /^\d{4}\/02\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-02-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Mar':
-      Record.find({ "date": { $regex: /^\d{4}\/03\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-03-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Apr':
-      Record.find({ "date": { $regex: /^\d{4}\/04\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-04-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'May':
-      Record.find({ "date": { $regex: /^\d{4}\/05\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-05-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Jun':
-      Record.find({ "date": { $regex: /^\d{4}\/06\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-06-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Jul':
-      Record.find({ "date": { $regex: /^\d{4}\/07\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-07-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Aug':
-      Record.find({ "date": { $regex: /^\d{4}\/08\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-08-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Sep':
-      Record.find({ "date": { $regex: /^\d{4}\/09\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-09-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Oct':
-      Record.find({ "date": { $regex: /^\d{4}\/10\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-10-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Nov':
-      Record.find({ "date": { $regex: /^\d{4}\/11\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-11-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break
     case 'Dec':
-      Record.find({ "date": { $regex: /^\d{4}\/12\/*/ } }, (err, records) => {
+      Record.find({ "date": { $regex: /^\d{4}-12-*/ } }, (err, records) => {
         display(res, err, records)
       }).sort({ date: -1 })
       break

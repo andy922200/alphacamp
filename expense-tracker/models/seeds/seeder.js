@@ -46,7 +46,7 @@ db.once('open', () => {
     if (dateNumber <= 9) {
       dateNumber = '0' + dateNumber
     }
-    formatDate = year + '/' + month + '/' + dateNumber
+    formatDate = year + '-' + month + '-' + dateNumber
     console.log(formatDate)
     for (let i = 3 * index + 1; i <= 3 * (index + 1); i++) {
       Record.create({
