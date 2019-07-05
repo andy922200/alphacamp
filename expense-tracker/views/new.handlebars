@@ -1,20 +1,36 @@
 <!-- views/new.handlebars-->
 <div class="createForm">
   <form action="/records" method="POST">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <div class="form-group row">
+      <label for="contentName">名稱</label>
+      <div>
+        <textarea id="contentName" name="contentName" placeholder="請輸入事件名稱"></textarea>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <div class="form-group row">
+      <label for="date">日期</label>
+      <div>
+        <input type="date" class="form-control" id="date" name="date" placeholder="請輸入日期，如 2019/03/23">
+      </div>
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <div class="form-group row">
+      <label for="category">類別</label>
+      <select class="form-control" id="category">
+        <option value="home">家居物業</option>
+        <option value="transport">交通出行</option>
+        <option value="entertain">休閒娛樂</option>
+        <option value="food">餐飲食品</option>
+        <option value="other">其他</option>
+      </select>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="form-group row">
+      <label for="amount">金額</label>
+      <div>
+        <input type="number" class="form-control" id="amount" name="amount" placeholder="請輸入金額">
+      </div>
+    </div>
+    <div class="form-group row">
+      <button type="submit" class="btn btn-primary">新增支出</button>
+    </div>
   </form>
 </div>
