@@ -1,0 +1,45 @@
+<!-- views/edit.handlebars-->
+{{> messages}}
+<div class="createForm">
+  <form action="/records" method="POST" id="createForm">
+    <div class="form-group row">
+      <label for="contentName">名稱</label>
+      <div>
+        <textarea id="contentName" name="contentName" placeholder="請輸入事件名稱">{{{record.name}}}</textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="date">日期</label>
+      <div>
+        <input type="date" class="form-control" id="date" name="date" placeholder="請輸入日期，如 2019/03/23"
+          value="{{{record.date}}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="category">類別</label>
+      <select name="category" class="form-control" id="category" form="createForm">
+        <option value="家居物業">家居物業</option>
+        <option value="交通出行">交通出行</option>
+        <option value="休閒娛樂">休閒娛樂</option>
+        <option value="餐飲食品">餐飲食品</option>
+        <option value="其他">其他</option>
+      </select>
+      <script src="/javascripts/jquery-3.4.1.min.js"></script>
+      <script type="text/javascript">
+        $(function () {
+          $('#category').children('[value="{{record.category}}"]').attr('selected', true);
+        })
+      </script>
+    </div>
+    <div class="form-group row">
+      <label for="amount">金額</label>
+      <div>
+        <input type="number" class="form-control" id="amount" name="amount" placeholder="請輸入金額"
+          value="{{{record.amount}}}">
+      </div>
+    </div>
+    <div class="form-group row">
+      <button type="submit" class="btn btn-primary">更新</button>
+    </div>
+  </form>
+</div>

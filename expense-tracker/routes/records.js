@@ -139,6 +139,12 @@ router.get('/filter', (req, res) => {
 })
 
 // specific modification page
+router.get('/:id/edit', (req, res) => {
+  Record.findById({ _id: req.params.id }, (err, record) => {
+    if (err) return console.error(err)
+    return res.render('edit', { css: ['edit.css'], record: record })
+  })
+})
 
 // modify a record and check by validator
 
