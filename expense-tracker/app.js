@@ -47,12 +47,23 @@ app.use(flash())
 // initialize Passport
 app.use(passport.initialize())
 app.use(passport.session())
-//require('./config/passport')(passport)
+require('./config/passport')(passport)
 
 // add local variables
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  next()
+})
 
 //production mode or development mode
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 // load router settings
 app.use('/', require('./routes/home'))
 app.use('/records', require('./routes/records'))
+app.use('/users', require('./routes/user'))

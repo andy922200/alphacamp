@@ -2,16 +2,17 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
+const { authenticated } = require('../config/auth')
 // initialize express-validator
 const { check, validationResult } = require('express-validator')
 const { recordFormCheck } = require('../models/validationRule')
 
 // specific add page
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
   return res.render('new', { css: ['edit.css'] })
 })
 // create a new record and check by validator
-router.post('/', recordFormCheck, (req, res) => {
+router.post('/', authenticated, recordFormCheck, (req, res) => {
   const errors = validationResult(req)
   const record = Record({
     name: req.body.contentName,
@@ -48,7 +49,7 @@ function display(res, err, records) {
   return res.render('index', { css: ['index.css'], record: records, totalAmount: totalAmount })
 }
 
-router.get('/filter', (req, res) => {
+router.get('/filter', authenticated, (req, res) => {
   switch (req._parsedOriginalUrl.query) {
     case 'Jan':
       Record.find({ "date": { $regex: /^\d{4}-01-*/ } }, (err, records) => {
@@ -139,7 +140,7 @@ router.get('/filter', (req, res) => {
 })
 
 // specific modification page
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authenticated, (req, res) => {
   Record.findById({ _id: req.params.id }, (err, record) => {
     if (err) return console.error(err)
     return res.render('edit', { css: ['edit.css'], record: record })
@@ -147,7 +148,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // modify a record and check by validator
-router.put('/:id', recordFormCheck, (req, res) => {
+router.put('/:id', authenticated, recordFormCheck, (req, res) => {
   const errors = validationResult(req)
   Record.findById({ _id: req.params.id }, (err, record) => {
 
@@ -176,7 +177,7 @@ router.put('/:id', recordFormCheck, (req, res) => {
 })
 
 // delete a record
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authenticated, (req, res) => {
   Record.findById({ _id: req.params.id }, (err, record) => {
     if (err) return console.error(err)
     record.remove(err => {
