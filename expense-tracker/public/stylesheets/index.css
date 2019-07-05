@@ -98,8 +98,14 @@ nav a .btn{
   display:flex;
   justify-content: center;
 }
+
+#totalAmount h4{
+  font-size:30px;
+}
+
+
 #totalAmount p{
-  font-size:50px;
+  font-size:80px;
   color:rgb(255, 145, 0);
   margin-left:40px;
 }
