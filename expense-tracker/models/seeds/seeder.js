@@ -36,7 +36,17 @@ db.once('open', () => {
 
   function GenerateRecord(index, user) {
     let date = new Date()
-    let formatDate = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate()
+    let formatDate = ''
+    let year = date.getFullYear()
+    let month = date.getMonth()
+    let dateNumber = date.getDate()
+    if (month <= 9) {
+      month = '0' + month
+    }
+    if (dateNumber <= 9) {
+      dateNumber = '0' + dateNumber
+    }
+    formatDate = year + '/' + month + '/' + dateNumber
     console.log(formatDate)
     for (let i = 3 * index + 1; i <= 3 * (index + 1); i++) {
       Record.create({
