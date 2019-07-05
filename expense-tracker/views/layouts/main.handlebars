@@ -24,9 +24,15 @@
       <a class="navbar-brand" href="/">
         <h1>家庭記帳本</h1>
       </a>
-      <a href="users/logout" class="text-secondary">
-        <button type="button" class="btn btn btn-primary">登出</button>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="text-secondary">
+        <button type="button" class="btn btn btn-danger">登出</button>
       </a>
+      {{else}}
+      <a href="/users/login" class="text-secondary">
+        <button type="button" class="btn btn btn-primary">登入</button>
+      </a>
+      {{/if}}
     </nav>
 
   </header>
