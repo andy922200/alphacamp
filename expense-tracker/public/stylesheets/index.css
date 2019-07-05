@@ -67,6 +67,12 @@ img {
   height: 0;
 }
 
+/*Log in/out Button*/
+nav a .btn{
+  padding: 15px;
+  font-size:20px;
+}
+
 /*FILTER*/
 .filter{
   width:100%;
