@@ -35,3 +35,4 @@ npm run seeder
 ```
 8. 打開瀏覽器，輸入 localhost:3000 即可使用
 ## 螢幕截圖
+![Demo](./public/img/Demo_Version1.gif "demo")
