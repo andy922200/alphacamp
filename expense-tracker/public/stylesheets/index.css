@@ -103,7 +103,6 @@ nav a .btn{
   font-size:30px;
 }
 
-
 #totalAmount p{
   font-size:80px;
   color:rgb(255, 145, 0);
@@ -164,4 +163,19 @@ nav a .btn{
   margin:5px 10px 0px 10px;
   font-size:18px;
   padding:24px;
+}
+
+/*addRecord*/
+#addRecord{
+  margin:10px auto;
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
+#addRecord button{
+  margin: 5px auto;
+  font-size:36px;
+  padding:30px;
+  border-radius: 10%;
 }
