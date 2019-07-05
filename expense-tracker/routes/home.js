@@ -3,10 +3,11 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../models/record.js')
+const { authenticated } = require('../config/auth')
 
 // index router
-router.get('/', (req, res) => {
-  Record.find((err, records) => {
+router.get('/', authenticated, (req, res) => {
+  Record.find({ userID: req.user._id }, (err, records) => {
     let result = records.map(item => Object.values(item)[3].amount)
     let totalAmount = 0
     for (let i = 0; i < result.length; i++) {
