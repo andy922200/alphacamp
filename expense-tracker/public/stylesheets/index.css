@@ -91,4 +91,16 @@ nav a .btn{
   text-align-last: center;
 }
 
+/*Total Amount*/
+#totalAmount{
+  margin:10px auto;
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+#totalAmount p{
+  font-size:50px;
+  color:rgb(255, 145, 0);
+  margin-left:40px;
+}
 
