@@ -126,11 +126,11 @@ nav a .btn{
 
 .left-cell .icon{
   float:left;
+  width:90px;
 }
 .left-cell .icon i{
   font-size:80px;
   color:grey;
-  width:90px;
 }
 
 .left-cell .description{
@@ -146,9 +146,13 @@ nav a .btn{
  font-size:20px;
 }
 
+.middle-cell{
+  width:200px;
+}
+
 .middle-cell p{
   float:right;
-  margin: 0px 20px 0px 70px;
+  margin: 0px 0px 0px 70px;
   height: 80px; 
   font-size:50px;
 }
