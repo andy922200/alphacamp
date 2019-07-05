@@ -55,3 +55,4 @@ app.use(passport.session())
 
 // load router settings
 app.use('/', require('./routes/home'))
+app.use('/records', require('./routes/records'))
