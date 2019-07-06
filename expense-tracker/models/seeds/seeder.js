@@ -5,7 +5,7 @@ const User = require('../user')
 const bcrypt = require('bcryptjs')
 
 //connect with database
-mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true })
 const db = mongoose.connection
 db.on('error', () => {
   console.log('db error!')

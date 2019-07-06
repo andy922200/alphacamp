@@ -11,8 +11,8 @@ const app = express()
 const port = 3000
 
 //express Listener
-app.listen(port, () => {
-  console.log(`Express is listening on localhost ${port}`)
+app.listen(process.env.PORT || port, () => {
+  console.log(`App is running!`)
 })
 
 //production mode or development mode
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // connect with database
-mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true })
 const db = mongoose.connection
 db.on('error', () => {
   console.log('mongodb error!')
