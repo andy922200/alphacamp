@@ -2,7 +2,6 @@ const express = require('express')
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const hbars = require('handlebars')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
@@ -31,7 +30,7 @@ db.once('open', () => {
 })
 // load record model
 const Record = require('./models/record')
-//require('./public/javascripts/handlebarshelper')
+require('./handlebarshelper')
 
 //template engine setting
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
@@ -71,8 +70,3 @@ app.use('/users', require('./routes/user'))
 app.use('/auth', require('./routes/authsFB'))
 app.use('/auth', require('./routes/authsGoogle'))
 app.use('/auth', require('./routes/authsGithub'))
-
-//customized if/else, options.fn() & options.inverse() are methods.
-hbars.registerHelper('ifEquals', function (arg1, arg2, options) {
-  return (arg1 == arg2) ? options.fn(this) : options.inverse(this)
-})
