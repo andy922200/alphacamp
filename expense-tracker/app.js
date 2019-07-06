@@ -2,7 +2,7 @@ const express = require('express')
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const Handlebars = require('handlebars')
+const hbars = require('handlebars')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const passport = require('passport')
@@ -73,6 +73,6 @@ app.use('/auth', require('./routes/authsGoogle'))
 app.use('/auth', require('./routes/authsGithub'))
 
 //customized if/else, options.fn() & options.inverse() are methods.
-Handlebars.registerHelper('ifEquals', function (arg1, arg2, options) {
+hbars.registerHelper('ifEquals', function (arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this)
 })
