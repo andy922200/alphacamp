@@ -1,6 +1,5 @@
 const express = require('express')
 const handlebars = require('express-handlebars')
-const handlebarsHelper = require('./public/javascripts/handlebarshelper')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
@@ -31,6 +30,7 @@ db.once('open', () => {
 })
 // load record model
 const Record = require('./models/record')
+require('./public/javascripts/handlebarshelper')
 
 //template engine setting
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
