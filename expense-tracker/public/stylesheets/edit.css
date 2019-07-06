@@ -101,10 +101,10 @@ nav a .btn{
   font-size:28px;
 }
 
-.form-group button{
+.form-group button, .form-group a button{
   font-size:28px;
-  padding:30px;
-  margin:0px auto;
+  padding:20px;
+  margin:0px 10px;
 }
 
 /*RWD*/
