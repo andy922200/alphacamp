@@ -1,33 +1,33 @@
 <!-- views/index.handlebars-->
 <div class="filter">
   <div class="btn-group" id='monthFilter'>
-    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-      aria-expanded="false">月份</button>
+    <button type="button" class="btn btn-info dropdown-toggle monthDropdownBtn" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false" data-item="{{key1}}">月份</button>
     <div class="dropdown-menu dropdown-menu-right">
-      <a class="dropdown-item" href="/records/filter?Jan">一月</a>
-      <a class="dropdown-item" href="/records/filter?Feb">二月</a>
-      <a class="dropdown-item" href="/records/filter?Mar">三月</a>
-      <a class="dropdown-item" href="/records/filter?Apr">四月</a>
-      <a class="dropdown-item" href="/records/filter?May">五月</a>
-      <a class="dropdown-item" href="/records/filter?Jun">六月</a>
-      <a class="dropdown-item" href="/records/filter?Jul">七月</a>
-      <a class="dropdown-item" href="/records/filter?Aug">八月</a>
-      <a class="dropdown-item" href="/records/filter?Sep">九月</a>
-      <a class="dropdown-item" href="/records/filter?Oct">十月</a>
-      <a class="dropdown-item" href="/records/filter?Nov">十一月</a>
-      <a class="dropdown-item" href="/records/filter?Dec">十二月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Jan&category=">一月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Feb&category=">二月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Mar&category=">三月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Apr&category=">四月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=May&category=">五月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Jun&category=">六月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Jul&category=">七月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Aug&category=">八月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Sep&category=">九月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Oct&category=">十月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Nov&category=">十一月</a>
+      <a class="dropdown-item monthDropdownItem" href="/records/filter?month=Dec&category=">十二月</a>
     </div>
   </div>
 
   <div class="btn-group" id='categoryFilter'>
-    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-      aria-expanded="false">種類</button>
+    <button type="button" class="btn btn-info dropdown-toggle categoryDropdownBtn" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false" data-item="{{key2}}">種類</button>
     <div class="dropdown-menu dropdown-menu-right">
-      <a class="dropdown-item" href="/records/filter?home">家居物業</a>
-      <a class="dropdown-item" href="/records/filter?transport">交通出行</a>
-      <a class="dropdown-item" href="/records/filter?entertain">休閒娛樂</a>
-      <a class="dropdown-item" href="/records/filter?food">餐飲食品</a>
-      <a class="dropdown-item" href="/records/filter?other">其他</a>
+      <a class="dropdown-item categoryDropdownItem" href="/records/filter?category=home&month=">家居物業</a>
+      <a class="dropdown-item categoryDropdownItem" href="/records/filter?category=transport&month=">交通出行</a>
+      <a class="dropdown-item categoryDropdownItem" href="/records/filter?category=entertain&month=">休閒娛樂</a>
+      <a class="dropdown-item categoryDropdownItem" href="/records/filter?category=food&month=">餐飲食品</a>
+      <a class="dropdown-item categoryDropdownItem" href="/records/filter?category=other&month=">其他</a>
     </div>
   </div>
 </div>

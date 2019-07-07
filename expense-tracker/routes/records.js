@@ -6,6 +6,7 @@ const { authenticated } = require('../config/auth')
 // initialize express-validator
 const { check, validationResult } = require('express-validator')
 const { recordFormCheck } = require('../models/validationRule')
+const categoryList = { 'home': '家居物業', 'transport': '交通出行', 'entertain': '休閒娛樂', 'food': '餐飲食品', 'other': '其他' }
 
 // specific add page
 router.get('/new', authenticated, (req, res) => {
@@ -39,104 +40,61 @@ router.post('/', authenticated, recordFormCheck, (req, res) => {
 })
 
 // filter
-function display(res, err, records) {
-  let result = records.map(item => Object.values(item)[3].amount)
-  let totalAmount = 0
-  for (let i = 0; i < result.length; i++) {
-    totalAmount += result[i]
-  }
-  if (err) return console.log(err)
-  return res.render('index', { css: ['index.css'], record: records, totalAmount: totalAmount })
-}
-
 router.get('/filter', authenticated, (req, res) => {
-  switch (req._parsedOriginalUrl.query) {
+  let key1 = req.query.month
+  let key2 = req.query.category || ''
+  let query1 = ''
+  let query2 = categoryList[key2]
+  switch (key1) {
     case 'Jan':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-01-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '01' + '-*'
       break
     case 'Feb':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-02-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '02' + '-*'
       break
     case 'Mar':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-03-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '03' + '-*'
       break
     case 'Apr':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-04-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '04' + '-*'
       break
     case 'May':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-05-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '05' + '-*'
       break
     case 'Jun':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-06-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '06' + '-*'
       break
     case 'Jul':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-07-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '07' + '-*'
       break
     case 'Aug':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-08-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '08' + '-*'
       break
     case 'Sep':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-09-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '09' + '-*'
       break
     case 'Oct':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-10-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '10' + '-*'
       break
     case 'Nov':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-11-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '11' + '-*'
       break
     case 'Dec':
-      Record.find({ userID: req.user._id, "date": { $regex: /^\d{4}-12-*/ } }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
-      break
-    case 'home':
-      Record.find({ userID: req.user._id, "category": "家居物業" }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
-      break
-    case 'transport':
-      Record.find({ userID: req.user._id, "category": "交通出行" }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
-      break
-    case 'entertain':
-      Record.find({ userID: req.user._id, "category": "休閒娛樂" }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
-      break
-    case 'food':
-      Record.find({ userID: req.user._id, "category": "餐飲食品" }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
-      break
-    case 'other':
-      Record.find({ userID: req.user._id, "category": "其他" }, (err, records) => {
-        display(res, err, records)
-      }).sort({ date: -1 })
+      query1 = '^\\d{4}-' + '12' + '-*'
       break
   }
+  Record.find({
+    userID: req.user._id, date: new RegExp(query1), category: new RegExp(query2)
+  }).sort({ date: -1 }).exec((err, records) => {
+    console.log(records)
+    let result = records.map(item => Object.values(item)[3].amount)
+    let totalAmount = 0
+    for (let i = 0; i < result.length; i++) {
+      totalAmount += result[i]
+    }
+    if (err) return console.log(err)
+    return res.render('index', { css: ['index.css'], record: records, totalAmount: totalAmount, key1: key1, key2: key2 })
+  })
 })
 
 // specific modification page
@@ -163,9 +121,7 @@ router.put('/:id', authenticated, recordFormCheck, (req, res) => {
       //console.log(errors.array()[0]['msg'])
       for (let i = 0; i < errors.array().length; i++) {
         errorMessages.push({ message: errors.array()[i]['msg'] })
-        //console.log(errorMessages)
       }
-      console.log(record)
       res.render('edit', { css: ['edit.css'], record: record, errorMessages: errorMessages })
     } else {
       record.save(err => {
