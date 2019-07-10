@@ -51,7 +51,7 @@ db.once('open', () => {
     for (let i = 3 * index + 1; i <= 3 * (index + 1); i++) {
       Record.create({
         name: 'Title' + i,
-        category: '家居物業',
+        category: 'home',
         date: formatDate,
         amount: 1000 + i * 10,
         userID: user._id

@@ -1,0 +1,86 @@
+{
+  "month": [
+    {
+      "key": "Jan",
+      "value": "01",
+      "name": "一月"
+    },
+    {
+      "key": "Feb",
+      "value": "02",
+      "name": "二月"
+    },
+    {
+      "key": "Mar",
+      "value": "03",
+      "name": "三月"
+    },
+    {
+      "key": "Apr",
+      "value": "04",
+      "name": "四月"
+    },
+    {
+      "key": "May",
+      "value": "05",
+      "name": "五月"
+    },
+    {
+      "key": "Jun",
+      "value": "06",
+      "name": "六月"
+    },
+    {
+      "key": "Jul",
+      "value": "07",
+      "name": "七月"
+    },
+    {
+      "key": "Aug",
+      "value": "08",
+      "name": "八月"
+    },
+    {
+      "key": "Sep",
+      "value": "09",
+      "name": "九月"
+    },
+    {
+      "key": "Oct",
+      "value": "10",
+      "name": "十月"
+    },
+    {
+      "key": "Nov",
+      "value": "11",
+      "name": "十一月"
+    },
+    {
+      "key": "Dec",
+      "value": "12",
+      "name": "十二月"
+    }
+  ],
+  "category": {
+    "home": {
+      "Name_en": "home",
+      "Name_zh_tw": "家居物業"
+    },
+    "transport": {
+      "Name_en": "transport",
+      "Name_zh_tw": "交通出行"
+    },
+    "entertain": {
+      "Name_en": "entertain",
+      "Name_zh_tw": "休閒娛樂"
+    },
+    "food": {
+      "Name_en": "food",
+      "Name_zh_tw": "餐飲食品"
+    },
+    "other": {
+      "Name_en": "other",
+      "Name_zh_tw": "其他"
+    }
+  }
+}

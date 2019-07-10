@@ -4,51 +4,24 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../models/record.js')
 const { authenticated } = require('../config/auth')
-const categoryList = { 'home': '家居物業', 'transport': '交通出行', 'entertain': '休閒娛樂', 'food': '餐飲食品', 'other': '其他' }
+const monthList = require('../public/data/data.json').month
+const categoryList = require('../public/data/data.json').category
 
 // index router
 router.get('/', authenticated, (req, res) => {
-  let key1 = req.query.month
-  let key2 = req.query.category || ''
+  let monthNumber = req.query.month
   let query1 = ''
-  let query2 = categoryList[key2]
-  switch (key1) {
-    case 'Jan':
-      query1 = '^\\d{4}-' + '01' + '-*'
-      break
-    case 'Feb':
-      query1 = '^\\d{4}-' + '02' + '-*'
-      break
-    case 'Mar':
-      query1 = '^\\d{4}-' + '03' + '-*'
-      break
-    case 'Apr':
-      query1 = '^\\d{4}-' + '04' + '-*'
-      break
-    case 'May':
-      query1 = '^\\d{4}-' + '05' + '-*'
-      break
-    case 'Jun':
-      query1 = '^\\d{4}-' + '06' + '-*'
-      break
-    case 'Jul':
-      query1 = '^\\d{4}-' + '07' + '-*'
-      break
-    case 'Aug':
-      query1 = '^\\d{4}-' + '08' + '-*'
-      break
-    case 'Sep':
-      query1 = '^\\d{4}-' + '09' + '-*'
-      break
-    case 'Oct':
-      query1 = '^\\d{4}-' + '10' + '-*'
-      break
-    case 'Nov':
-      query1 = '^\\d{4}-' + '11' + '-*'
-      break
-    case 'Dec':
-      query1 = '^\\d{4}-' + '12' + '-*'
-      break
+  let query2 = req.query.category
+  let zh_twCategory = ''
+  if (!req.query.month) {
+    query1 = ''
+  } else {
+    query1 = '^\\d{4}-' + monthNumber + '-*'
+  }
+  if (categoryList[query2] === undefined) {
+    zh_twCategory = ''
+  } else {
+    zh_twCategory = categoryList[query2]['Name_zh_tw']
   }
   Record.find({
     userID: req.user._id, date: new RegExp(query1), category: new RegExp(query2)
@@ -59,7 +32,7 @@ router.get('/', authenticated, (req, res) => {
       totalAmount += result[i]
     }
     if (err) return console.log(err)
-    return res.render('index', { css: ['index.css'], record: records, totalAmount: totalAmount, key1: key1, key2: key2 })
+    return res.render('index', { css: ['index.css'], record: records, totalAmount: totalAmount, monthNumber: monthNumber, query2: query2, monthList: monthList, categoryList: categoryList, zh_twCategory: zh_twCategory })
   })
 
 })
