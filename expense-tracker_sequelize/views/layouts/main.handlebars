@@ -1,0 +1,48 @@
+<!-- ./layouts/main.handlebars -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Expense Tracker 繁體中文版</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/fontawesome.min.css">
+  <!--不同頁面使用不同CSS-->
+  {{#each css}}
+  <link rel="stylesheet" href="/stylesheets/{{this}}">
+  {{/each}}
+</head>
+
+<body>
+  <header>
+    <!-- Navigation-->
+    <nav class="navbar navbar-dark bg-primary">
+      <a class="navbar-brand" href="/">
+        <h1>家庭記帳本</h1>
+      </a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="text-secondary">
+        <button type="button" class="btn btn btn-danger">登出</button>
+      </a>
+      {{else}}
+      <a href="/users/login" class="text-secondary">
+        <button type="button" class="btn btn btn-primary">登入</button>
+      </a>
+      {{/if}}
+    </nav>
+
+  </header>
+  <!--JavaScript Files-->
+  <script src="/javascripts/jquery-3.4.1.min.js"></script>
+  <!-- partial templates will replace the part of "body" here -->
+  {{{ body }}}
+  <script src="/javascripts/popper.min.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
+  <script src="/javascripts/main.js"></script>
+</body>
+
+</html>

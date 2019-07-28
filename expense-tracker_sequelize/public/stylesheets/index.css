@@ -1,0 +1,252 @@
+/* ========== CSS 全區設定 ========== */
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+* {
+  /*border-box：實際寬高＝所設定的數值(已包含border和padding)*/
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom:5px;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  overflow: hidden;
+}
+
+/*a, a:hover, a:focus {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}*/
+
+img {
+  height: auto;
+  display: block;
+}
+
+/*
+.container{
+  max-width:1170px;
+  margin:0px;
+  padding: 5px 0px;
+}
+
+.session{
+  max-width: 1170px;
+  margin: 5px 5px;
+}*/
+
+/*清除浮動效果，讓高度出現，方法II*/
+.clearfix:after{
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+/*Log in/out Button*/
+nav a .btn{
+  padding: 15px;
+  font-size:20px;
+}
+
+/*FILTER*/
+.filter{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+
+.filter .btn-group{
+  margin:10px;
+  width:130px;
+  height:50px;
+}
+
+.filter .btn-group button{
+  font-size:20px;
+}
+
+/*Total Amount*/
+#totalAmount{
+  margin:10px auto;
+  display:flex;
+  justify-content: center;
+}
+
+#totalAmount h4{
+  font-size:30px;
+}
+
+#totalAmount p{
+  font-size:40px;
+  color:rgb(255, 145, 0);
+  margin-left:40px;
+}
+
+/*Cell*/
+.record{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell{
+  width:680px;
+}
+
+.left-cell{
+  float:left;
+  width:400px;
+}
+
+.left-cell .icon{
+  float:left;
+  width:90px;
+}
+.left-cell .icon i{
+  font-size:80px;
+  color:#a95c5c;
+}
+
+.left-cell .description{
+  float:left;
+  margin-left:20px;
+}
+
+.left-cell .description p:first-child{
+ font-size:24px;
+}
+
+.left-cell .description p:last-child{
+ font-size:18px;
+}
+
+.right-cell{
+  float:right;
+  margin-left:0px;
+}
+.right-cell p{
+  float:left;
+  font-size:26px;
+}
+
+.right-cell a button, .right-cell button{
+  margin:5px 3px;
+  font-size:18px;
+  padding:10px;
+}
+
+/*addRecord*/
+#addRecord{
+  margin:10px auto;
+  display:flex;
+  justify-content: center;
+}
+
+#addRecord button{
+  margin: 5px auto;
+  font-size:36px;
+  padding:24px;
+  border-radius: 10%;
+}
+
+/*RWD*/
+@media screen and (min-width:320px) and (max-width:661px){
+#totalAmount{
+  margin:0px auto;
+  display:flex;
+  justify-content:center;
+}
+
+#totalAmount h4{
+  font-size:30px;
+}
+
+#totalAmount p{
+  font-size:32px;
+  color:rgb(255, 145, 0);
+  margin-left:40px;
+}
+.record{
+  display:flex;
+  margin:10px auto;
+  justify-content: space-between;
+}
+
+.cell{
+  width:500px;
+  margin:0px auto;
+}
+
+.left-cell{
+  float: left;
+  width:320px;
+}
+
+.left-cell .icon{
+  float:left;
+  width:90px;
+}
+.left-cell .icon i{
+  font-size:50px;
+  color:#a95c5c;
+}
+
+.left-cell .description{
+  float:left;
+  margin-left:10px;
+}
+
+.left-cell .description p:first-child{
+ font-size:20px;
+}
+
+.left-cell .description p:last-child{
+ font-size:18px;
+}
+
+.right-cell{
+  float:right;
+  margin-left:0px;
+}
+
+.right-cell p{
+  font-size:26px;
+}
+
+.right-cell a button, .right-cell button{
+  margin:5px 3px;
+  font-size:18px;
+  padding:10px;
+}
+
+#addRecord{
+  margin: 0 auto;
+  display:flex;
+  justify-content: center;
+}
+}

@@ -1,0 +1,124 @@
+/* ========== CSS 全區設定 ========== */
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+* {
+  /*border-box：實際寬高＝所設定的數值(已包含border和padding)*/
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom:5px;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  overflow: hidden;
+}
+
+/*a, a:hover, a:focus {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}*/
+
+img {
+  height: auto;
+  display: block;
+}
+
+/*
+.container{
+  max-width:1170px;
+  margin:0px;
+  padding: 5px 0px;
+}
+
+.session{
+  max-width: 1170px;
+  margin: 5px 5px;
+}*/
+
+/*清除浮動效果，讓高度出現，方法II*/
+.clearfix:after{
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+/*Log in/out Button*/
+.createForm{
+  display: flex;
+  justify-content: center;
+  background-color: antiquewhite;
+}
+nav a .btn{
+  padding: 15px;
+  font-size:20px;
+}
+
+/*createForm*/
+.form-group{
+  margin: 70px 50px 80px 50px;
+}
+
+.form-group label, .form-group textarea{
+  font-size:28px;
+  margin:15px 10px;
+}
+
+.form-group input, .form-group textarea{
+  font-size:28px;
+  margin:10px;
+  width:300px;
+}
+
+.form-group select{
+  width: 300px;
+  margin:10px;
+  height:50px;
+  font-size:28px;
+}
+
+.form-group button, .form-group a button{
+  font-size:28px;
+  padding:20px;
+  margin:0px 10px;
+}
+
+/*RWD*/
+@media screen and (min-width:320px) and (max-width:419px){
+  .form-group{
+  margin: 0px auto;
+  }
+  .createForm{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: antiquewhite;
+  }
+  .form-group input, .form-group textarea{
+  font-size:28px;
+  margin:10px;
+}
+}
