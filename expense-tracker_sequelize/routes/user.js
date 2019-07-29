@@ -37,36 +37,28 @@ router.get('/register', (req, res) => {
 
 // register check
 router.post('/register', (req, res) => {
-  User.create({
-    userName: req.body.name,
-    email: req.body.email,
-    password: req.body.password
-  }).then(user => res.redirect('/'))
-
-  /*const { name, email, password, password2 } = req.body
-  const errors = validationResult(req)
+  const { name, email, password, password2 } = req.body
   let errorMessages = []
-  User.findOne({ email: email }).then(user => {
-    if (user) {
-      errorMessages.push({ message: '此 Email 已有人使用' })
-      res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
-    } else if (password !== password2) {
-      errorMessages.push({ message: '密碼輸入不一致，請再次輸入' })
-      res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
-    } else if (!errors.isEmpty()) {
-      //console.log(errors.array()[0]['msg'])
-      for (let i = 0; i < errors.array().length; i++) {
-        errorMessages.push({ message: errors.array()[i]['msg'] })
-        //console.log(errorMessages)
-      }
-      res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
-    } else {
-      const newUser = new User({ name, email, password })
-      //use bcrypt to form 'hash password'
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err
-          newUser.password = hash
+  if (!name || !email || !password || !password2) {
+    errorMessages.push({ message: '請確定已填寫所有選項' })
+  }
+  if (password !== password2) {
+    errorMessages.push({ message: '密碼輸入不一致，請再次輸入' })
+  }
+  if (errorMessages.length > 0) {
+    res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
+  } else {
+    User.findOne({ where: { email: email } })
+      .then(user => {
+        if (user) {
+          errorMessages.push({ message: '此 Email 已有人使用' })
+          res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
+        } else {
+          const newUser = new User({
+            userName: req.body.name,
+            email: req.body.email,
+            password: req.body.password
+          })
           newUser
             .save()
             .then(user => {
@@ -74,17 +66,16 @@ router.post('/register', (req, res) => {
               res.redirect('/users/login')
             })
             .catch(err => console.log(err))
-        })
+        }
       })
-    }
-  })*/
+  }
 })
 
 // log out
 router.get('/logout', (req, res) => {
-  /*req.logout()
+  req.logout()
   req.flash('success_msg', '成功登出')
-  res.redirect('/users/login')*/
+  res.redirect('/users/login')
 })
 
 module.exports = router
