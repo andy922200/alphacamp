@@ -14,4 +14,11 @@ let recordFormCheck = [
     }).withMessage('請輸入大於0的數字')
 ]
 
-module.exports = { recordFormCheck }
+let registerFormCheck = [
+  check('email')
+    .isEmail().withMessage("請輸入正確的 Email 格式"),
+  check('password')
+    .isLength({ min: 8 }).withMessage("請至少輸入八位英數字")
+]
+
+module.exports = { recordFormCheck, registerFormCheck }

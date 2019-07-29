@@ -9,11 +9,6 @@ const flash = require('connect-flash')
 const app = express()
 const port = 3000
 
-// express Listener
-app.listen(process.env.PORT || port, () => {
-  console.log(`App is running!`)
-})
-
 //production mode or development mode
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -60,6 +55,11 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/home'))
 app.use('/records', require('./routes/records'))
 app.use('/users', require('./routes/user'))
-//app.use('/auth', require('./routes/authsFB'))
-//app.use('/auth', require('./routes/authsGoogle'))
-//app.use('/auth', require('./routes/authsGithub'))
+app.use('/auth', require('./routes/authsFB'))
+app.use('/auth', require('./routes/authsGoogle'))
+app.use('/auth', require('./routes/authsGithub'))
+
+// express Listener
+app.listen(process.env.PORT || port, () => {
+  console.log(`App is running!`)
+})

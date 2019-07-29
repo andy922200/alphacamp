@@ -4,7 +4,7 @@ const router = express.Router()
 
 // initialize express-validator
 const { check, validationResult } = require('express-validator')
-const { recordFormCheck } = require('../public/javascripts/validationRule')
+const { recordFormCheck, registerFormCheck } = require('../public/javascripts/validationRule')
 
 // load database
 const db = require('../models')

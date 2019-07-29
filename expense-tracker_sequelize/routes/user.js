@@ -9,10 +9,6 @@ const db = require('../models')
 const Record = db.Record
 const User = db.User
 
-// initialize express-validator
-const { check, validationResult } = require('express-validator')
-//const { recordFormCheck, registerFormCheck } = require('../models/validationRule')
-
 // login page
 router.get('/login', (req, res) => {
   res.render('login', { css: ['login.css'] })
@@ -45,6 +41,9 @@ router.post('/register', (req, res) => {
   if (password !== password2) {
     errorMessages.push({ message: '密碼輸入不一致，請再次輸入' })
   }
+  if ((password.length < 8) || (password2.length < 8)) {
+    errorMessages.push({ message: '請至少輸入八位英數字' })
+  }
   if (errorMessages.length > 0) {
     res.render('register', { name, email, css: ['register.css'], errorMessages: errorMessages })
   } else {
@@ -59,13 +58,20 @@ router.post('/register', (req, res) => {
             email: req.body.email,
             password: req.body.password
           })
-          newUser
-            .save()
-            .then(user => {
-              req.flash('success_msg', '註冊成功，請登入')
-              res.redirect('/users/login')
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if (err) throw err
+              newUser.password = hash
+              newUser
+                .save()
+                .then(user => {
+                  req.flash('success_msg', '註冊成功，請登入')
+                  res.redirect('/users/login')
+                })
+                .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
+          })
+
         }
       })
   }
