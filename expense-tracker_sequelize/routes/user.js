@@ -20,14 +20,14 @@ router.get('/login', (req, res) => {
 
 // login check
 router.post('/login', (req, res, next) => {
-  /*if ((!req.body.email) || (!req.body.password)) {
+  if ((!req.body.email) || (!req.body.password)) {
     req.flash('warning_msg', '請檢查欄位是否空白')
   }
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/users/login'
   })(req, res, next)
-  req.flash('warning_msg', 'Email 或密碼錯誤，請重新輸入')*/
+  req.flash('warning_msg', 'Email 或密碼錯誤，請重新輸入')
 })
 
 // register page

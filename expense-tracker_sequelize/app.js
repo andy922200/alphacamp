@@ -24,7 +24,6 @@ const db = require('./models')
 const Record = db.Record
 const User = db.User
 
-
 // template engine setting
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -45,7 +44,7 @@ app.use(flash())
 // initialize Passport
 app.use(passport.initialize())
 app.use(passport.session())
-//require('./config/passport')(passport)
+require('./config/passport')(passport)
 
 // add local variables
 app.use((req, res, next) => {

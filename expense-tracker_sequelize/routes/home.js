@@ -8,9 +8,9 @@ const categoryList = require('../public/data/data.json').category
 // load model
 
 // load auth middleware
-//const { authenticated } = require('../config/auth')
+const { authenticated } = require('../config/auth')
 
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   res.send('Hello World!')
 })
 
