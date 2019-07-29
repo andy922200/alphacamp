@@ -27,6 +27,7 @@ const User = db.User
 // template engine setting
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+require('./handlebarshelper')
 
 // load static files
 app.use(express.static('public'))
@@ -57,7 +58,7 @@ app.use((req, res, next) => {
 
 // load router settings
 app.use('/', require('./routes/home'))
-//app.use('/records', require('./routes/records'))
+app.use('/records', require('./routes/records'))
 app.use('/users', require('./routes/user'))
 //app.use('/auth', require('./routes/authsFB'))
 //app.use('/auth', require('./routes/authsGoogle'))
