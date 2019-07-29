@@ -19,9 +19,11 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
-// connect with database
+// connect with database and load model
+const db = require('./models')
+const Record = db.Record
+const User = db.User
 
-// load model
 
 // template engine setting
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
@@ -57,7 +59,7 @@ app.use((req, res, next) => {
 // load router settings
 app.use('/', require('./routes/home'))
 //app.use('/records', require('./routes/records'))
-//app.use('/users', require('./routes/user'))
+app.use('/users', require('./routes/user'))
 //app.use('/auth', require('./routes/authsFB'))
 //app.use('/auth', require('./routes/authsGoogle'))
 //app.use('/auth', require('./routes/authsGithub'))
