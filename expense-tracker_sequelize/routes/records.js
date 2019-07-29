@@ -19,20 +19,13 @@ router.get('/new', authenticated, (req, res) => {
   return res.render('new', { css: ['edit.css'] })
 })
 
-/* 顯示一筆 Todo 的詳細內容
-router.get('/:id', authenticated, (req, res) => {
-  res.send('顯示一筆 Todo')
-})*/
-
 // create a new record and check by validator
 router.post('/', authenticated, recordFormCheck, (req, res) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     let errorMessages = []
-    console.log(errors)
     for (let i = 0; i < errors.array().length; i++) {
       errorMessages.push({ message: errors.array()[i]['msg'] })
-      //console.log(errorMessages)
     }
     res.render('new', { css: ['edit.css'], errorMessages: errorMessages })
   } else {
@@ -50,22 +43,75 @@ router.post('/', authenticated, recordFormCheck, (req, res) => {
         return res.status(422).json(err)
       })
   }
-
 })
 
-// 修改 Todo 頁面
+// modify specific-record page 
 router.get('/:id/edit', authenticated, (req, res) => {
-  res.send('修改 Todo 頁面')
+  User.findByPk(req.user.id)
+    .then((user) => {
+      if (!user) throw new Error("user is not found.")
+      return Record.findOne({
+        where: {
+          Id: req.params.id,
+          UserId: req.user.id
+        }
+      })
+    })
+    .then((record) => {
+      return res.render('edit', { css: ['edit.css'], record: record })
+    })
 })
 
-// 修改 Todo
-router.put('/:id', authenticated, (req, res) => {
-  res.send('修改 Todo')
+// modify specific record
+router.put('/:id', authenticated, recordFormCheck, (req, res) => {
+  const errors = validationResult(req)
+  Record.findOne({
+    where: {
+      Id: req.params.id,
+      UserId: req.user.id
+    }
+  })
+    .then((record) => {
+      record.name = req.body.contentName
+      record.category = req.body.category
+      record.date = req.body.date
+      record.amount = req.body.amount
+      if (!errors.isEmpty()) {
+        let errorMessages = []
+        for (let i = 0; i < errors.array().length; i++) {
+          errorMessages.push({ message: errors.array()[i]['msg'] })
+        }
+        res.render('edit', { css: ['edit.css'], record: record, errorMessages: errorMessages })
+      } else {
+        record.save()
+        return res.redirect(`/`)
+      }
+      return
+    })
+    .catch((error) => {
+      return res.status(422).json(error)
+    })
+
 })
 
-// 刪除 Todo
-router.delete('/:id/delete', authenticated, (req, res) => {
-  res.send('刪除 Todo')
+// delete specific record
+router.delete('/:id', authenticated, (req, res) => {
+  User.findByPk(req.user.id)
+    .then((user) => {
+      if (!user) throw new Error("user is not found")
+      return Record.destroy({
+        where: {
+          UserId: req.user.id,
+          Id: req.params.id
+        }
+      })
+    })
+    .then((record) => {
+      return res.redirect(`/`)
+    })
+    .catch((error) => {
+      return res.status(422).json(error)
+    })
 })
 
 module.exports = router
