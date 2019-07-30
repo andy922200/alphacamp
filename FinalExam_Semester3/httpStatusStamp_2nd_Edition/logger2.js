@@ -25,7 +25,7 @@ const logger2 = function (req, res, next) {
   res.on("finish", () => {
     var hrend = process.hrtime(hrstart)
     var elapsedTimeInMs = hrend[0] * 1000 + hrend[1] / 1000000
-    console.log(unixChange() + ' | ' + req.originalMethod + ' from ' + req.url + ' | total time:' + elapsedTimeInMs.toFixed(0) + 'ms')
+    console.log(unixChange() + ' | ' + req.originalMethod + ' from ' + req.url + ' | total time:' + elapsedTimeInMs.toFixed(1) + 'ms')
   })
   next()
 }
