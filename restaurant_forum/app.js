@@ -18,17 +18,18 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }))
 app.use(flash())
 
-// load local variables
-app.use((req, res, next) => {
-  res.locals.success_messages = req.flash('success_messages')
-  res.locals.error_messages = req.flash('error_messages')
-  next()
-})
-
 // setup passport
 const passport = require('./config/passport')
 app.use(passport.initialize())
 app.use(passport.session())
+
+// load local variables
+app.use((req, res, next) => {
+  res.locals.success_messages = req.flash('success_messages')
+  res.locals.error_messages = req.flash('error_messages')
+  res.locals.user = req.user
+  next()
+})
 
 // initialize routes settings
 require('./routes')(app, passport)
