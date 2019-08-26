@@ -1,6 +1,7 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const session = require('express-session')
 const flash = require('connect-flash')
 const app = express()
@@ -13,6 +14,9 @@ const db = require('./models')
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
+
+// initialize method-override
+app.use(methodOverride('_method'))
 
 // initialize session and flash messages
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }))
