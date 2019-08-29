@@ -35,9 +35,11 @@ app.use((req, res, next) => {
   next()
 })
 
+// load restaurant image
+app.use('/upload', express.static(__dirname + '/upload'))
+
 // initialize routes settings
 require('./routes')(app, passport)
-
 
 // initialize app listener
 app.listen(port, () => {
